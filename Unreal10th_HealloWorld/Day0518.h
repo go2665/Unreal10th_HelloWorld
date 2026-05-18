@@ -72,3 +72,37 @@
 //Number--;	// (Number = 54)
 //Number--;	// (Number = 53)
 //printf("Number : %d\n", Number);
+
+//// 간단 실습
+//// - 두 수를 입력받아 스왑하기
+//int Num1 = 0, Num2 = 0, Num3 = 0;
+//printf("첫번째 숫자를 입력하세요 : ");
+//cin >> Num1;		//std::cin >> Num1;
+//printf("두번째 숫자를 입력하세요 : ");
+//cin >> Num2;
+//printf("입력한 숫자는 %d, %d 입니다.\n", Num1, Num2);
+//Num3 = Num1;
+//Num1 = Num2;
+//Num2 = Num3;
+//printf("스왑한 결과는 %d, %d 입니다.\n", Num1, Num2);
+//
+//// - 두 수를 입력받아 합을 출력하기
+//printf("숫자 두개를 입력하세요 : ");
+//cin >> Num1 >> Num2;
+//printf("입력한 숫자는 %d, %d 입니다.\n", Num1, Num2);
+//printf("두 수의 합은 %d입니다.\n", Num1 + Num2);
+//
+//// - 사각형의 가로, 세로를 입력받아 넓이를 출력하기
+//printf("사각형의 가로와 세로를 입력하세요 : ");
+//cin >> Num1 >> Num2;
+//printf("입력한 숫자는 %d, %d 입니다.\n", Num1, Num2);
+//printf("사각형의 넓이는 %d입니다.\n", Num1* Num2);
+//
+//// - 두 수를 입력받아 나머지를 출력하기(% 연산자를 사용한 것과 안한것 모두)
+//printf("숫자 두개를 입력하세요 : ");
+//cin >> Num1 >> Num2;
+//printf("입력한 숫자는 %d, %d 입니다.\n", Num1, Num2);
+//printf("나머지 값은 %d입니다.\n", Num1% Num2);
+//int Mok = Num1 / Num2;
+//int Namugi = Num1 - (Mok * Num2);
+//printf("나머지 값은 %d입니다.\n", Namugi);
