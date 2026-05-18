@@ -106,3 +106,76 @@
 //int Mok = Num1 / Num2;
 //int Namugi = Num1 - (Mok * Num2);
 //printf("나머지 값은 %d입니다.\n", Namugi);
+
+// 실습 풀이
+	//온도 변환기 
+	//설명: 섭씨 온도를 정수로 입력받아 화씨 온도로 변환하여 출력하는 프로그램.
+	//공식 : 화씨 = 섭씨 * 9 / 5 + 32 = 섭씨 * 1.8 + 32
+	//int Temperature = 0;
+	//printf("섭씨 온도를 입력해 주세요 : ");
+	//cin >> Temperature;
+	//printf("화씨 온도는 %d입니다.\n", Temperature * 9 / 5 + 32);
+
+	//시간 계산기
+	//초를 입력 받아 시분초 출력하기
+	//int Second = 0;
+	//printf("계산할 초를 입력해 주세요 : ");
+	//cin >> Second;
+	//int Hour = Second / 3600;	
+	//Second -= Hour * 3600;	//Second = Second - Hour * 3600;
+	//int Minute = Second / 60;
+	//Second -= Minute * 60;
+	//printf("%d시간 %d분 %d초", Hour, Minute, Second);
+
+	//동전 개수 계산하기
+	//금액을 입력받아 500원, 100원, 50원, 10원 동전이 각각 몇 개 필요한지 계산하는 프로그램.
+	//금액이 큰 동전을 최대한 많이 받아야 한다.
+	//int Money = 0;
+	//printf("총 금액을 입력해 주세요 : ");
+	//cin >> Money;
+	//int CoinCount500 = 0;
+	//CoinCount500 = Money / 500;
+	//Money -= CoinCount500 * 500;
+	//int CoinCount100 = 0;
+	//CoinCount100 = Money / 100;
+	//Money -= CoinCount100 * 100;
+	//int CoinCount50 = 0;
+	//CoinCount50 = Money / 50;
+	//Money -= CoinCount50 * 50;
+	//int CoinCount10 = 0;
+	//CoinCount10 = Money / 10;
+	//Money -= CoinCount10 * 10;
+	//printf("500원 : %d개, 100원 : %d개, 50원 : %d개, 10원 : %d개, 1원 : %d개",
+	//	CoinCount500, CoinCount100, CoinCount50, CoinCount10, Money);
+
+	//자리수 분리하기(입력은 항상 세자리라고 가정)
+	//수를 입력받고 100의 자리, 10의 자리, 1의 자리를 각각 출력하기	
+	//각 자리의 수를 합해서 출력하기
+	//int Number = 0;
+	//printf("세자리 수를 입력해 주세요 : ");
+	//cin >> Number;
+	//int Hundred = Number / 100;
+	//Number -= Hundred * 100;
+	//int Ten = Number / 10;
+	//Number -= Ten * 10;
+	//int One = Number;
+	//printf("100의 자리 : %d, 10의 자리 : %d, 1의 자리 : %d\n", Hundred, Ten, One);
+	//printf("각 자리의 수를 합하면 %d입니다.", Hundred + Ten + One);
+
+	//파일 용량 환산기
+	//메가바이트(MB) 단위의 파일 크기를 입력받아, 킬로바이트(KB)와 바이트(Byte) 단위로 환산해 출력하는 프로그램
+	//공식 : 1MB = 1024KB, 1KB = 1024Byte
+	//int FileSize = 0;
+	//printf("파일 용량을 MB 단위로 입력해 주세요 : ");
+	//cin >> FileSize;
+	//printf("%dMB = %dKB = %dByte", FileSize, FileSize * 1024, FileSize * 1024 * 1024);
+
+	//타일 개수 계산기(면적 구하기)
+	//직사각형 방의 가로, 세로 길이(cm)를 입력받고, 가로 30cm, 세로 30cm인 타일로 이 방을 채우려면 타일이 총 몇 개 필요한지 출력하기
+	//int Width = 0, Height = 0;
+	//const int TileSize = 30;	
+	//printf("방의 가로 세로 길이를 입력하세요 : ");
+	//cin >> Width >> Height;
+	//int WidthCount = (Width + (TileSize - 1)) / TileSize;
+	//int HeightCount = (Height + (TileSize - 1)) / TileSize;
+	//printf("필요한 총 타일의 개수는 [%d]개가 필요합니다.", WidthCount * HeightCount);

@@ -6,6 +6,7 @@ using namespace std;
 
 int main()  // 코드의 시작점
 {
+
 	
 }
 
