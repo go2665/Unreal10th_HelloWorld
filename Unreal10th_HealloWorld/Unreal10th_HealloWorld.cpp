@@ -5,7 +5,7 @@
 
 int main()  // 코드의 시작점
 {
-	printf("Hello branch branch!\n");
+	printf("안녕하세요 Git Branch\n");
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
