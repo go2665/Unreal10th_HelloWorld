@@ -53,7 +53,7 @@
 //		b = b - 1;	b--;
 // 
 //int Number = 10;	// 대입 연산자로 Number에 10을 넣었다.
-//printf("Number : %d\n", Number);
+//printf("Number : %d\n", Number); 
 //printf("Number : %5d\n", Number);	// Number를 정수 5자리로 출력해라
 //Number = 20;		// 대입 연산자로 Number에 20을 넣었다.(덮어써진다)
 //printf("Number : %d\n", Number);
