@@ -334,3 +334,43 @@
 	//	}
 	//	printf("\n");
 	//}
+
+
+//	// 랜덤
+//srand(time(0));	// 랜덤의 시드값을 현재 시간으로 설정하기(프로그램 실행할 때 한번만하면 된다.)
+//
+//int RandomNumber;
+//int TestCount = 10000000;
+//int Num1 = 0, Num2 = 0, Num3 = 0, Num4 = 0, Num5 = 0, Num6 = 0;
+//for (int i = 0; i < TestCount; i++)
+//{
+//	RandomNumber = rand() % 6 + 1; // 1~6이 랜덤으로 골라진다.
+//	//printf("Random : %d\n", RandomNumber);		
+//	switch (RandomNumber)
+//	{
+//	case 1:
+//		Num1++;
+//		break;
+//	case 2:
+//		Num2++;
+//		break;
+//	case 3:
+//		Num3++;
+//		break;
+//	case 4:
+//		Num4++;
+//		break;
+//	case 5:
+//		Num5++;
+//		break;
+//	case 6:
+//		Num6++;
+//		break;
+//	default:
+//		printf("ERROR!!! ERROR!!! ERROR!!! ERROR!!! ERROR!!! ERROR!!! ERROR!!! ERROR!!! ERROR!!! ");
+//		break;
+//	}
+//}
+//
+//printf("Num1: [%d], Num2: [%d], Num3: [%d], Num4: [%d], Num5: [%d], Num6: [%d]\n",
+//	Num1, Num2, Num3, Num4, Num5, Num6);

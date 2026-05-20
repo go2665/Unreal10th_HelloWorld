@@ -2,11 +2,21 @@
 //
 
 #include <iostream>
+#include <stdio.h>
+#include <time.h>
+//#include <random>
+
 using namespace std;
 
 int main()  // 코드의 시작점
 {
-	
+	// 간단 실습
+    // 1. 가위 바위 보 게임 만들기
+    //    - 3선승제
+    //    - enum 활용
+    // 2. 하이 로우
+    //    - 컴퓨터가 1~100 사이의 임의의 숫자를 선택하고, 사용자가 맞출 때까지 입력을 받아 "더 높게", "더 낮게" 등의 힌트를 제공하는 게임
+    //    - 5번안에 맞춰야 함
 
 }
 
