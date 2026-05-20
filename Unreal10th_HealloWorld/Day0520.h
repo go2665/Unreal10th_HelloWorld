@@ -241,3 +241,96 @@
 	//	printf("Hello do-while : %d\n", j);
 	//	j++;
 	//} while (j < 5);
+
+// 간단 실습
+	// 1. 0을 입력 받을 때까지 입력 받은 숫자의 합을 출력
+	//	- while이랑 do - while 둘 다 해보기
+	// while
+	//int InputNumber = 0;
+	//printf("더할 숫자를 입력하세요 : ");
+	//cin >> InputNumber;
+	//int Sum = 0;
+	//while (InputNumber != 0)
+	//{
+	//	Sum += InputNumber;
+	//	printf("더할 숫자를 입력하세요 : ");
+	//	cin >> InputNumber;
+	//}
+	//printf("모든 수의 합은 %d입니다.\n", Sum);
+
+	// do-while
+	//int InputNumber = 0;
+	//int Sum = 0;
+	//do
+	//{
+	//	printf("더할 숫자를 입력하세요 : ");
+	//	cin >> InputNumber;
+	//	Sum += InputNumber;
+	//} while (InputNumber != 0);
+	//printf("모든 수의 합은 %d입니다.\n", Sum);
+
+	//// 2. 입력받은 수의 구구단 출력하기
+	//int InputNumber = 0;
+	//printf("출력할 구구단 단수를 입력하세요 : ");
+	//cin >> InputNumber;
+	//printf("%d 단을 출력합니다.\n", InputNumber);
+	//for (int i = 1; i < 10; i++)
+	//{
+	//	printf("%d * %d = %d\n", InputNumber, i, InputNumber * i);
+	//}
+
+	//// 3. 1부터 입력받은 수까지 있는 수들 중 홀수만 출력하기
+	//int InputNumber = 0;
+	//printf("마지막 수를 입력하세요 : ");
+	//cin >> InputNumber;
+	//for (int i = 1; i <= InputNumber; i++)
+	//{
+	//	//if (i % 2 == 0)	// 짝수면 아래쪽 코드 스킵하기
+	//	//{
+	//	//	continue;	// 반복문에서 이번 반복만 스킵하는 것
+	//	//}
+	//	//printf("%d는 홀수입니다.\n", i);
+
+	//	if (i % 2 == 1)
+	//	{
+	//		printf("%d는 홀수입니다.\n", i);
+	//	}
+	//}
+
+	//// 4. 1~100 중에 7의 배수만 출력하기
+	//for (int i = 1; i < 101; i++)
+	//{
+	//	if (i % 7 == 0)
+	//	{
+	//		printf("%d는 7의 배수입니다.\n", i);
+	//	}
+	//}
+
+	//// 5. 팩토리얼 계산하기
+	//int InputNumber = 0;
+	//printf("팩토리얼을 계산할 수를 입력하세요 : ");
+	//cin >> InputNumber;
+	//int Sum = 1;
+	//for (int i = 2; i <= InputNumber; i++)
+	//{
+	//	Sum *= i;
+	//}
+	//printf("결과 값은 [%d]입니다.", Sum);
+
+	//// 6. *로 피라미드 모양의 삼각형 찍기
+	//int InputNumber = 0;
+	//printf("피라미드 층수를 입력하세요 : ");
+	//cin >> InputNumber;
+	//for (int i = 0; i < InputNumber; i++)	// 한번 반복될 때마다 한층씩 그리기 위한 반복문(for)
+	//{
+	//	for (int j = 0; j < InputNumber - 1 - i; j++)
+	//	{
+	//		printf(" ");
+	//	}
+
+	//	for (int j = 0; j < 2 * i + 1; j++)
+	//	{
+	//		printf("*");
+	//	}
+	//	printf("\n");
+	//}
