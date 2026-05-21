@@ -6,50 +6,19 @@
 #include <time.h>
 //#include <random>
 #include "Day0521_2.h"
+#include "Practice0521_1.h"
+#include "Practice0521_2.h"
 
 using namespace std;
 
 int main()  // 코드의 시작점
 {	
-	// 함수
-	// - 특정 기능을 수행하는 코드 뭉치
-	
-	// 선언부
-	//	- 이런 함수가 있다고 알리는 것
-	//  - 프로토타입 제시.(이름, 리턴타입, 파라메터)
-	//  - 함수의 실제 동작이 어떻게 되는지에 대한 내용은 없음
-	//  - h(헤더)에 선언한다.
-	// 정의부
-	//  - 함수의 실제 동작을 작성하는 부분
-	//	- {} 사이에 실제 실행할 코드를 작성.(함수 바디)
-	//	- cpp파일에 작성한다.
+	unsigned int Seed = (unsigned int)time(0);
+	//Seed = 0;		// 테스트용으로 임시로 설정
+	srand(Seed);	// 시드값 초기화
 
-	// 함수의 구성요소
-	// 1. 리턴 타입
-	//	- 함수가 실행이 끝났을 때 돌려주는 결과값.
-	// 2. 함수 이름
-	//	- 함수들을 구분하기 위해 붙이는 이름
-	//	- 함수를 호출(Call)할 때 사용.
-	// 3. 파라메터
-	//	- 함수를 호출할 때 전달하는 값
-	//	- 매개변수, 인자라고도 함.
-	//	- 0개 이상 가능
-	//	- 데이터 타입과 이름으로 구성
-	// 4. 함수 바디
-	//	- 함수의 실제 실행 코드
-	//	- 종료할 때 return이 있어야 한다.
-
-	int Sum = Add(10, 20);
-	printf("Sum = %d\n", Sum);
-
-	double A = 30.0;
-	double B = 15.5;
-	double C = Add(A, B);
-
-	string str1 = "Hello ";
-	string str2 = "World!";
-	string str3 = Add(str1, str2);
-
+	//StateChangeRun();	// 실습 1번 실행용
+	DiceGameRun();		// 실습 2번 실행용
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
