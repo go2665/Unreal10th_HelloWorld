@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Day0521_2.cpp" />
     <ClCompile Include="Unreal10th_HealloWorld.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +132,7 @@
     <ClInclude Include="Day0518.h" />
     <ClInclude Include="Day0520.h" />
     <ClInclude Include="Day0521.h" />
+    <ClInclude Include="Day0521_2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
