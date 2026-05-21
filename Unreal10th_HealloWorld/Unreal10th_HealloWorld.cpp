@@ -76,6 +76,8 @@ int main()  // 코드의 시작점
 			{
 				printf("배팅 금액을 입력하세요(1~%d) : ", MaxBet);
 				cin >> Bet;
+				cin.clear();					// 에러 상태 해제
+				cin.ignore(10000, '\n');		// 이전 입력 제거
 			} while (Bet<1 || Bet > MaxBet);	// 범위를 벗어난 값이나 잘못 입력했을 때를 위해 다시 입력 받는 처리
 		}
 		else
