@@ -42,9 +42,13 @@ int main()  // 코드의 시작점
 	int Sum = Add(10, 20);
 	printf("Sum = %d\n", Sum);
 
-	// 빼기 함수 만들기
-	// 곱하기 함수 만들기
-	// 나누기 함수 만들기
+	double A = 30.0;
+	double B = 15.5;
+	double C = Add(A, B);
+
+	string str1 = "Hello ";
+	string str2 = "World!";
+	string str3 = Add(str1, str2);
 
 }
 
