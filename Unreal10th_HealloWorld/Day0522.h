@@ -17,4 +17,5 @@ void Test_Reference3(int& Data1, int& Data2, int& Data3);
 void Day0522_ArrayParameter();
 void Test_ArrayParameter(int* Array, int Lenght);
 
+void Day0522_Shuffle();
 void FisherYatesShuffle(int* Array, int Lenght);

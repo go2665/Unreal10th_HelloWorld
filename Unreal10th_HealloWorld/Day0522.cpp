@@ -206,12 +206,38 @@ void Test_ArrayParameter(int* Array, int Lenght)
 	printf("]\n");
 }
 
+
+void Day0522_Shuffle()
+{
+	const int DataSize = 100;
+	int Data[DataSize] = { 0, };
+
+	for (int i = 0; i < DataSize; i++)
+	{
+		Data[i] = i;
+	}
+	Test_ArrayParameter(Data, DataSize);
+
+	FisherYatesShuffle(Data, DataSize);
+	Test_ArrayParameter(Data, DataSize);
+}
+
 void FisherYatesShuffle(int* Array, int Lenght)
 {
 	// 1. 인덱스는 배열의 마지막 요소에서 첫번째 요소로 진행
 	// 2. 인덱스가 가리키는 요소와 0~인덱스까지의 요소 중 임의의 요소를 선택
 	// 3. 인덱스가 가리키는 요소와 임의로 선택된 요소를 교환
 	// 4. 인덱스는 1 감소
+	// 5. 인덱스가 0이되면 종료
+
+	for (int i = Lenght - 1; i > 0; i--)
+	{
+		int j = rand() % (i + 1);
+
+		int Temp = Array[i];
+		Array[i] = Array[j];
+		Array[j] = Temp;
+	}
 }
 
 	// 간단 실습
