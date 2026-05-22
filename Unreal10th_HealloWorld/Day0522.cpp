@@ -186,3 +186,37 @@ void Test_Reference3(int& OutData1, int& OutData2, int& OutData3)
 	OutData2 = 20;
 	OutData3 = 30;
 }
+
+void Day0522_ArrayParameter()
+{
+	const int Length = 5;
+	int Array[Length] = { 10, 50, 30, 20, 40 };
+
+	// 포인터(*)와 배열은 근본적으로 같다.
+	Test_ArrayParameter(Array, Length);
+}
+
+void Test_ArrayParameter(int* Array, int Lenght)
+{
+	printf("Array : [ ");
+	for (int i = 0; i < Lenght; i++)
+	{
+		printf("%d ", Array[i]);
+	}
+	printf("]\n");
+}
+
+void FisherYatesShuffle(int* Array, int Lenght)
+{
+	// 1. 인덱스는 배열의 마지막 요소에서 첫번째 요소로 진행
+	// 2. 인덱스가 가리키는 요소와 0~인덱스까지의 요소 중 임의의 요소를 선택
+	// 3. 인덱스가 가리키는 요소와 임의로 선택된 요소를 교환
+	// 4. 인덱스는 1 감소
+}
+
+	// 간단 실습
+	// 1. 배열의 값들을 전부 출력해주는 함수 만들기
+	// 2. 배열을 파라메터로 받는 함수를 만들어 구현하기
+	//	  - 배열 내부값을 모두 더하고 평균 구해보기
+	//    - 배열의 값 중 최대값과 최소값 구해보기
+	// 3. 피셔 예이츠 알고리즘 완성하기

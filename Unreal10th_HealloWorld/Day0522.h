@@ -13,3 +13,8 @@ void Day0522_Reference();
 void Test_Reference1(int Data);
 int Test_Reference2(int Data);
 void Test_Reference3(int& Data1, int& Data2, int& Data3);
+
+void Day0522_ArrayParameter();
+void Test_ArrayParameter(int* Array, int Lenght);
+
+void FisherYatesShuffle(int* Array, int Lenght);

@@ -24,7 +24,9 @@ int main()  // 코드의 시작점
 	//Day0522_Array_Example03();
 	
 	//Day0522_Casting();
-	Day0522_Reference();
+	//Day0522_Reference();
+
+	Day0522_ArrayParameter();
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
