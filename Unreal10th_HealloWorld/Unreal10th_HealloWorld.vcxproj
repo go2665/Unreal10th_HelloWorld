@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Day0521_2.cpp" />
+    <ClCompile Include="Day0522.cpp" />
     <ClCompile Include="Practice0521_1.cpp" />
     <ClCompile Include="Practice0521_2.cpp" />
     <ClCompile Include="Unreal10th_HealloWorld.cpp" />
@@ -135,6 +136,7 @@
     <ClInclude Include="Day0520.h" />
     <ClInclude Include="Day0521.h" />
     <ClInclude Include="Day0521_2.h" />
+    <ClInclude Include="Day0522.h" />
     <ClInclude Include="Practice0521_1.h" />
     <ClInclude Include="Practice0521_2.h" />
   </ItemGroup>
