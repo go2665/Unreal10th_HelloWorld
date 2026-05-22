@@ -333,3 +333,7 @@
 //string str1 = "Hello ";
 //string str2 = "World!";
 //string str3 = Add(str1, str2);
+
+// 함수--------------------------------------------------------------------------------
+//StateChangeRun();	// 실습 1번 실행용
+//DiceGameRun();		// 실습 2번 실행용
