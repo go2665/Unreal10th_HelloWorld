@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Day0522.h"
 
-void Day0522_Run()
+void Day0522_Array()
 {
 	// 배열
 	// 같은 종류의 데이터타입을 한번에 여러개 저장할 때 사용.
@@ -37,7 +37,7 @@ void Day0522_Run()
 	// 3. 배열의 값 중 최대값과 최소값 구해보기
 }
 
-void Day0522_Example01()
+void Day0522_Array_Example01()
 {
 	// 1. 배열 만들고 초기화 하고 전부 출력해보기(1차원과 2차원 모두)
 	int Array1[5] = { 1, 2, 3, 4, 5 };
@@ -76,7 +76,7 @@ void Day0522_Example01()
 	printf("]\n");
 }
 
-void Day0522_Example02()
+void Day0522_Array_Example02()
 {
 	// 2. 배열 내부값을 모두 더하고 평균 구해보기
 	const int Size = 5;
@@ -88,12 +88,12 @@ void Day0522_Example02()
 		printf("%d ", Array[i]);
 		Sum += Array[i];
 	}
-	float Average = Sum / Size;
+	float Average = Sum / (float)Size;
 	printf("}\n");
 	printf("Sum = %d, Average = %.1f", Sum, Average);
 }
 
-void Day0522_Example03()
+void Day0522_Array_Example03()
 {
 	// 3. 배열의 값 중 최대값과 최소값 구해보기
 	int Max = INT32_MIN;
@@ -112,4 +112,77 @@ void Day0522_Example03()
 		}
 	}
 	printf("Max = %d, Min = %d", Max, Min);
+}
+
+void Day0522_Casting()
+{
+	// 값의 데이터 타입을 다른 타입으로 임시 변경하는 것
+	// C 스타일
+	// - 강제 변환(위험함)
+	int Integer = 10;
+	float RealNumer = (float)Integer;	// Integer에 있는 값을 float타입으로 임시변경한 후 RealNumber에 저장
+
+	bool Boolean = (bool)Integer;
+	Boolean = (bool)0;
+
+	int i = 0;
+
+	// C++ 스타일
+	// 1. static_cast
+	//		- C스타일 cast와 매우 유사
+	//		- 문법적으로 암시적 변환이 허용될 때만 캐스팅을 한다.
+	RealNumer = static_cast<float>(Integer);
+	// 2. dynamic_cast
+	//		- 상속을 배워야 의미가 있음. 다운캐스팅을 할 때 사용.
+	//		- 캐스팅 할 수 있으면 null이 아닌 값. 할 수 없으면 null을 반환.
+	//		- RTTI(RunTime Type Information)를 관리
+	//		- 변환 속도가 매우 늦다.(일반적인 게임에서 남용하면 안된다)
+	//	캐스팅된 결과를 받을 변수 = dymanic_cast<캐스팅할 타입>(변수);
+	// 3. const_cast
+	//		- const나 volatile 속성을 제거하거나 추가할 때 사용.
+	//		- 사용되지 않는 것이 권장(레거시 처리용)	// 
+	// 4. reinterpret_cast
+	//		- C스타일 캐스트의 위험한 부분을 그대로 가져온 것
+	//		- 원래 타입의 구조를 무시하고 새 타입으로 강제적으로 해석하게 하는 cast
+	//		- 포인터 타입간 변환이나 유니온 변환 같은 경우 사용
+}
+
+void Day0522_Reference()
+{
+	// 참조
+	//  - 변수의 별명
+	//	- 참조 대상을 재설정하는 것이 불가능하다.(선언할 때 참조할 변수를 지정해줘야 한다.)
+	//	- 참조를 변경하면 참조하고 있던 원본 변수도 함께 수정된다.
+
+	int Num = 10;
+	int Target = Num;
+	Target = 15;
+
+	Test_Reference1(Num);
+	Num = Test_Reference2(Num);
+
+	int& NumRef = Num;
+	int i = 0;
+	//int& Ref;		// 참조할 변수 지정없이 사용하는건 안된다.
+	NumRef = 100;	// 참조하고 있는 변수인 Num이 100이 된다.
+	
+	int Num1 = 0, Num2 = 0, Num3 = 0;
+	Test_Reference3(Num1, Num2, Num3);
+}
+
+void Test_Reference1(int Data)
+{
+	Data += 10;
+}
+
+int Test_Reference2(int Data)
+{
+	return Data += 10;
+}
+
+void Test_Reference3(int& OutData1, int& OutData2, int& OutData3)
+{
+	OutData1 = 10;
+	OutData2 = 20;
+	OutData3 = 30;
 }

@@ -18,11 +18,13 @@ int main()  // 코드의 시작점
 	Seed = 0;		// 테스트용으로 임시로 설정
 	srand(Seed);	// 시드값 초기화
 
-	//Day0522_Run();
-	//Day0522_Example01();
-	//Day0522_Example02();
-	Day0522_Example03();
+	//Day0522_Array();
+	//Day0522_Array_Example01();
+	//Day0522_Array_Example02();
+	//Day0522_Array_Example03();
 	
+	//Day0522_Casting();
+	Day0522_Reference();
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
