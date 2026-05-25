@@ -1,5 +1,6 @@
 #pragma once
 
+void Day0522();
 void Day0522_Array();
 
 void Day0522_Array_Example01();

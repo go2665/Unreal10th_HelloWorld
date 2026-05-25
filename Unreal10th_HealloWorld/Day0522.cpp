@@ -1,6 +1,21 @@
 #include <iostream>
 #include "Day0522.h"
 
+void Day0522()
+{
+	//Day0522_Array();
+	//Day0522_Array_Example01();
+	//Day0522_Array_Example02();
+	//Day0522_Array_Example03();
+
+	//Day0522_Casting();
+	//Day0522_Reference();
+
+	//Day0522_ArrayParameter();
+
+	Day0522_Shuffle();
+}
+
 void Day0522_Array()
 {
 	// 배열
