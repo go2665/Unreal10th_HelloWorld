@@ -9,6 +9,7 @@
 #include "Practice0521_1.h"
 #include "Practice0521_2.h"
 #include "Day0522.h"
+#include "Weekend0523.h"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ int main()  // 코드의 시작점
 	Seed = 0;		// 테스트용으로 임시로 설정
 	srand(Seed);	// 시드값 초기화
 
-	
+	Weekend0523_Dungeon();
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
