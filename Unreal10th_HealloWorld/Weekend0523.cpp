@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 #include "Weekend0523.h"
 
 const int MazeHeight = 10;
@@ -10,6 +11,9 @@ const char* ShapeWall = "# ";
 const char* ShapePath = ". ";
 const char* ShapeStart = "S ";
 const char* ShapeEnd = "E ";
+
+const float BattleRate = 0.1f;
+const int InitHealth = 100;
 
 // 미로 배열
 int Maze[MazeHeight][MazeWidth] =
@@ -30,6 +34,7 @@ void Weekend0523_Dungeon()
 {
     int PlayerX = InvalidPosition;
     int PlayerY = InvalidPosition;
+    int PlayerHealth = InitHealth;
 
     FindStart(PlayerX, PlayerY);    // 시작 위치 찾기
 
@@ -73,6 +78,19 @@ void Weekend0523_Dungeon()
             }
 
             // 랜덤 인카운터 처리
+            if (RandomIncounter())
+            {
+                // 전투 시작
+                if (Battle(PlayerHealth))
+                {
+                    printf("승리! 탐색을 계속합니다.\n");
+                }
+                else
+                {
+                    printf("당신은 패배했습니다.\nGame Over...\n");
+                    break;
+                }
+            }
         }
     }
     else
@@ -211,5 +229,52 @@ MoveDirection GetMoveInput(int PlayerX, int PlayerY)
     }
 
     return Result;
+}
+
+float GetRandom()
+{
+    return rand() / (float)RAND_MAX;   // 0.0f ~ 1.0f
+}
+
+int GetRandomRange(int Min, int Max)
+{
+    return Min + rand() % (Max - Min + 1);  // Min ~ Max(양끝 포함)
+}
+
+bool RandomIncounter()
+{
+    return GetRandom() < BattleRate;    // BattleRate보다 랜덤값이 적으면 전투 발생
+}
+
+bool Battle(int& PlayerHealth)
+{
+    const float CriticalRate = 0.1f;
+    const int PlayerMinAttackPower = 5;
+    const int PlayerMaxAttackPower = 15;
+    const int EnemyMinAttackPower = 5;
+    const int EnemyMaxAttackPower = 10;
+
+    int EnemyHealth = 20;
+
+    printf("고블린이 나타났다!! 전투 시작!\n");
+    int Turn = 1;
+    while (PlayerHealth > 0 && EnemyHealth > 0)
+    {
+        // 전투 턴 진행
+        printf("------------턴 %d------------\n", Turn);
+        printf("| Player : %3d  Enemy : %3d |\n", PlayerHealth, EnemyHealth);
+        printf("-----------------------------\n");
+        int Damage = GetRandomRange(PlayerMinAttackPower, PlayerMaxAttackPower);
+        printf("당신의 공격 : %d의 데미지를 주었다.\n", Damage);
+        EnemyHealth -= Damage;
+        if (EnemyHealth > 0)
+        {
+            Damage = GetRandomRange(EnemyMinAttackPower, EnemyMaxAttackPower);
+            printf("적의 공격 : %d의 데미지를 받았다.\n", Damage);
+            PlayerHealth -= Damage;
+        }
+    }
+
+    return PlayerHealth > 0;    // 플레이어의 체력이 남은채 while이 끝났으면 플레이어가 이긴것
 }
 

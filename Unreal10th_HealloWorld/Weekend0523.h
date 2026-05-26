@@ -66,3 +66,30 @@ bool IsWall(int X, int Y);
 /// <param name="PlayerY">플레이어의 현재 Y위치</param>
 /// <returns>입력받은 방향</returns>
 MoveDirection GetMoveInput(int PlayerX, int PlayerY);
+
+/// <summary>
+/// 0.0f ~ 1.0f 사이를 리턴하는 함수
+/// </summary>
+/// <returns>0.0f ~ 1.0f 사이의 랜덤값</returns>
+float GetRandom();
+
+/// <summary>
+/// Min ~ Max 사이의 랜덤한 값을 리턴하는 함수
+/// </summary>
+/// <param name="Min">랜덤의 최소값(포함)</param> 
+/// <param name="Max">랜덤의 최대값(포함)</param>
+/// <returns>Min ~ Max 사이의 랜덤한 값</returns>
+int GetRandomRange(int Min, int Max);
+
+/// <summary>
+/// 랜덤 인카운터(전투) 발생 여부 체크하는 함수
+/// </summary>
+/// <returns>true면 전투 발생, false면 아무일 없음</returns>
+bool RandomIncounter();
+
+/// <summary>
+/// 전투 처리 함수
+/// </summary>
+/// <param name="PlayerHealth">현재 플레이어의 HP</param>
+/// <returns>true면 플레이어의 승리, false면 패배</returns>
+bool Battle(int& PlayerHealth);
