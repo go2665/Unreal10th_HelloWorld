@@ -320,6 +320,12 @@ int GetSum(const char* NumberString)
     {
         Size++;
     }
+    //const char* p = NumberString;
+    //while (*p != '\0')
+    //{
+    //    p++;
+    //    Size++;
+    //}
 
     int Sum = 0;
     for (int i = 0; i < Size; i++)
