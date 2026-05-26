@@ -69,6 +69,11 @@ void Weekend0523_Dungeon()
 
         while (true)
         {
+            printf("진행을 위해 아무키나 눌러주세요");
+            int Temp = getchar();
+
+            system("cls"); // 화면 깨끗이 지우기
+
             // 화면 출력
             PrintMaze(PlayerX, PlayerY);
             
