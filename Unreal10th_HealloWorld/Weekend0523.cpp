@@ -278,3 +278,40 @@ bool Battle(int& PlayerHealth)
     return PlayerHealth > 0;    // 플레이어의 체력이 남은채 while이 끝났으면 플레이어가 이긴것
 }
 
+int GetSum(int Number)
+{
+    int Sum = 0;
+    while (Number > 0)
+    {
+        Sum += Number % 10;     // 1/10로 나눈 나머지는 따로 저장하기
+        Number /= 10;           // 계속 1/10로 나누기
+    }
+    return Sum;
+}
+
+int GetSum(const char* NumberString)
+{
+    int Size = 0;
+    while (NumberString[Size] != '\0')
+    {
+        Size++;
+    }
+
+    int Sum = 0;
+    for (int i = 0; i < Size; i++)
+    {
+        if (NumberString[i] >= '0' && NumberString[i] <= '9')
+        {
+            Sum += NumberString[i] - '0';
+        }
+        else
+        {
+            Sum = -1;
+            break;
+        }
+        
+    }
+    
+    return Sum;
+}
+

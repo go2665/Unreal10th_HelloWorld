@@ -93,3 +93,9 @@ bool RandomIncounter();
 /// <param name="PlayerHealth">현재 플레이어의 HP</param>
 /// <returns>true면 플레이어의 승리, false면 패배</returns>
 bool Battle(int& PlayerHealth);
+
+// 자리수 분리해서 합치기(입력은 인티저로 제한)
+int GetSum(int Number);
+
+// 자리수 분리해서 합치기(입력은 자리 수 제한 없음)
+int GetSum(const char* NumberString);
