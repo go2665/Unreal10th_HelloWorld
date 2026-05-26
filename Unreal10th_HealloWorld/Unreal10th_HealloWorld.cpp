@@ -19,26 +19,7 @@ int main()  // 코드의 시작점
 	Seed = 0;		// 테스트용으로 임시로 설정
 	srand(Seed);	// 시드값 초기화
 
-	// 5번
-	//Weekend0523_Dungeon();
-	//int Number = 0;
-	//std::cin >> Number;
-	//printf("입력받은 숫자는 %d입니다.\n", Number);
-	//printf("각 자리수의 합은 %d입니다.\n", GetSum(Number));
-
-	// 2번
-	//std::string NumberString;
-	//std::cin >> NumberString;
-	//printf("입력받은 숫자는 %s입니다.\n", NumberString.c_str());
-	//int Result = GetSum(NumberString.c_str());
-	//if (Result >= 0)
-	//{
-	//	printf("각 자리수의 합은 %d입니다.\n", Result);
-	//}
-	//else
-	//{
-	//	printf("숫자가 아닙니다.\n");
-	//}
+	
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴

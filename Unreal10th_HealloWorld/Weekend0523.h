@@ -17,6 +17,8 @@ enum MoveDirection
 	DirRight	= 1 << 3	// 8
 };
 
+void Weekend0523();
+
 // 게임 시작 함수
 void Weekend0523_Dungeon();
 

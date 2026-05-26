@@ -30,6 +30,30 @@ int Maze[MazeHeight][MazeWidth] =
     {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 };
 
+void Weekend0523()
+{
+    // 5번
+    Weekend0523_Dungeon();
+    int Number = 0;
+    std::cin >> Number;
+    printf("입력받은 숫자는 %d입니다.\n", Number);
+    printf("각 자리수의 합은 %d입니다.\n", GetSum(Number));
+
+    // 2번
+    std::string NumberString;
+    std::cin >> NumberString;
+    printf("입력받은 숫자는 %s입니다.\n", NumberString.c_str());
+    int Result = GetSum(NumberString.c_str());
+    if (Result >= 0)
+    {
+    	printf("각 자리수의 합은 %d입니다.\n", Result);
+    }
+    else
+    {
+    	printf("숫자가 아닙니다.\n");
+    }
+}
+
 void Weekend0523_Dungeon()
 {
     int PlayerX = InvalidPosition;
@@ -291,7 +315,7 @@ int GetSum(int Number)
 
 int GetSum(const char* NumberString)
 {
-    int Size = 0;
+    int Size = 0;    
     while (NumberString[Size] != '\0')
     {
         Size++;
