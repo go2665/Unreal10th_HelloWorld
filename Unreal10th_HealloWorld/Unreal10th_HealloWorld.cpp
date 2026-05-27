@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 // Unreal10th_HealloWorld.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
 
@@ -11,6 +12,7 @@
 #include "Day0522.h"
 #include "Weekend0523.h"
 #include "Day0526.h"
+#include "Day0527.h"
 
 using namespace std;
 
@@ -20,7 +22,8 @@ int main()  // 코드의 시작점
 	Seed = 0;		// 테스트용으로 임시로 설정
 	srand(Seed);	// 시드값 초기화
 
-	Weekend0523_Dungeon();
+	//Weekend0523_Dungeon();
+	Day0527();
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
