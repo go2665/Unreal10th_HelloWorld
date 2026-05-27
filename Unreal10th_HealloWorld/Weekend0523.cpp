@@ -2,33 +2,21 @@
 #include <stdlib.h>
 #include "Weekend0523.h"
 
-const int MazeHeight = 10;
-const int MazeWidth = 20;
-const int InvalidPosition = -1;
-
-const char* ShapePlayer = "P ";
-const char* ShapeWall = "# ";
-const char* ShapePath = ". ";
-const char* ShapeStart = "S ";
-const char* ShapeEnd = "E ";
-
-const float BattleRate = 0.1f;
-const int InitHealth = 100;
-
 // 미로 배열
-int Maze[MazeHeight][MazeWidth] =
-{
-    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-    {1,2,0,0,0,1,0,0,0,0,1,0,0,1,0,0,0,1,0,1},
-    {1,1,1,1,0,1,0,1,1,0,1,0,1,1,0,1,0,1,0,1},
-    {1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1},
-    {1,0,1,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1},
-    {1,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,1},
-    {1,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1},
-    {1,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,3,1},
-    {1,0,1,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1},
-    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-};
+//int Maze[MazeHeight][MazeWidth] =
+//{
+//    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+//    {1,2,0,0,0,1,0,0,0,0,1,0,0,1,0,0,0,1,0,1},
+//    {1,1,1,1,0,1,0,1,1,0,1,0,1,1,0,1,0,1,0,1},
+//    {1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1},
+//    {1,0,1,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1},
+//    {1,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,1},
+//    {1,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1},
+//    {1,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,3,1},
+//    {1,0,1,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1},
+//    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+//};
+int* Maze = nullptr;
 
 void Weekend0523()
 {
@@ -56,9 +44,27 @@ void Weekend0523()
 
 void Weekend0523_Dungeon()
 {
+    //int Maze[MazeHeight][MazeWidth];  // 메모리 구조는 똑같다.
+    Maze = new int[MazeHeight * MazeWidth]
+        {
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 2, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1,
+            1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1,
+            1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1,
+            1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1,
+            1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1,
+            1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1,
+            1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3, 1,
+            1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+        };
+    
+
     int PlayerX = InvalidPosition;
     int PlayerY = InvalidPosition;
     int PlayerHealth = InitHealth;
+    int PlayerMaxHealth = InitHealth;
+    int PlayerMoney = 0;
 
     FindStart(PlayerX, PlayerY);    // 시작 위치 찾기
 
@@ -66,8 +72,9 @@ void Weekend0523_Dungeon()
     {
         // 시작 위치를 잘 찾은 정상적인 경우
         printf("\n\n===== 텍스트 미로 탈출 게임 =====\n\n");
+        bool IsGameOver = false;
 
-        while (true)
+        while (!IsGameOver)
         {
             printf("진행을 위해 아무키나 눌러주세요");
             int Temp = getchar();
@@ -76,6 +83,7 @@ void Weekend0523_Dungeon()
 
             // 화면 출력
             PrintMaze(PlayerX, PlayerY);
+            PrintPlayerState(PlayerHealth, PlayerMaxHealth, PlayerMoney);
             
             // 출구에 도달했는지 확인
             if (IsGoal(PlayerX, PlayerY))
@@ -107,18 +115,33 @@ void Weekend0523_Dungeon()
             }
 
             // 랜덤 인카운터 처리
-            if (RandomIncounter())
+            switch (RandomIncounter())
             {
+            case RI_Battle:
                 // 전투 시작
                 if (Battle(PlayerHealth))
                 {
                     printf("승리! 탐색을 계속합니다.\n");
+                    Temp = getchar();
                 }
                 else
                 {
+                    Temp = getchar();
                     printf("당신은 패배했습니다.\nGame Over...\n");
-                    break;
+                    IsGameOver = true;
                 }
+                break;
+            case RI_Heal:
+                Heal(PlayerHealth, PlayerMaxHealth);
+                Temp = getchar();
+                break;
+            case RI_Treasure:
+                Treasure(PlayerMoney);
+                Temp = getchar();
+                break;
+            case RI_None:
+            default:
+                break;
             }
         }
     }
@@ -127,6 +150,10 @@ void Weekend0523_Dungeon()
         // 시작 위치를 찾지 못한 비정상적인 경우
         printf("ERROR!!!!! 맵에 시작위치를 찾을 수 없습니다.!!!\n");
     }
+
+    delete[] Maze;
+    Maze = nullptr;
+    printf("게임 종료\n");
 }
 
 void FindStart(int& OutX, int& OutY)
@@ -136,7 +163,7 @@ void FindStart(int& OutX, int& OutY)
     {
         for (int x = 0; x < MazeWidth; x++)
         {
-            if (Maze[y][x] == MazeStart)    // 플레이어 시작점을 찾았으면
+            if (GetMazeData(x,y) == MazeStart)    // 플레이어 시작점을 찾았으면
             {
                 OutX = x;   
                 OutY = y;
@@ -160,19 +187,19 @@ void PrintMaze(int PlayerX, int PlayerY)
             {
                 printf(ShapePlayer);    //printf("P ");와 같음                
             }
-            else if (Maze[y][x] == MazeWall)
+            else if (GetMazeData(x, y) == MazeWall)
             {
                 printf(ShapeWall);
             }
-            else if (Maze[y][x] == MazePath)
+            else if (GetMazeData(x, y) == MazePath)
             {
                 printf(ShapePath);
             }
-            else if (Maze[y][x] == MazeStart)
+            else if (GetMazeData(x, y) == MazeStart)
             {
                 printf(ShapeStart);
             }
-            else if (Maze[y][x] == MazeEnd)
+            else if (GetMazeData(x, y) == MazeEnd)
             {
                 printf(ShapeEnd);
             }
@@ -181,9 +208,16 @@ void PrintMaze(int PlayerX, int PlayerY)
     }
 }
 
+void PrintPlayerState(int Health, int MaxHealth, int Money)
+{
+    printf("┌───────────────────────────────────────────────┐\n");
+    printf("│  HP : [%4d] / [%4d]\t\tMoney : %6d  │\n", Health, MaxHealth, Money);
+    printf("└───────────────────────────────────────────────┘\n");
+}
+
 bool IsGoal(int PlayerX, int PlayerY)
 {
-    return Maze[PlayerY][PlayerX] == MazeEnd;
+    return GetMazeData(PlayerX, PlayerY) == MazeEnd;
 }
 
 int PrintAvailableMoves(int PlayerX, int PlayerY)
@@ -218,7 +252,7 @@ int PrintAvailableMoves(int PlayerX, int PlayerY)
 
 bool IsWall(int X, int Y)
 {    
-    return (X < 0 || X >= MazeWidth || Y < 0 || Y >= MazeHeight || Maze[Y][X] == MazeWall);
+    return (X < 0 || X >= MazeWidth || Y < 0 || Y >= MazeHeight || GetMazeData(X, Y) == MazeWall);
 }
 
 MoveDirection GetMoveInput(int PlayerX, int PlayerY)
@@ -270,9 +304,23 @@ int GetRandomRange(int Min, int Max)
     return Min + rand() % (Max - Min + 1);  // Min ~ Max(양끝 포함)
 }
 
-bool RandomIncounter()
+RandomIncounterType RandomIncounter()
 {
-    return GetRandom() < BattleRate;    // BattleRate보다 랜덤값이 적으면 전투 발생
+    RandomIncounterType Result = RI_None;
+    float Rate = GetRandom();
+    if (Rate < BattleRate)
+    {
+        Result = RI_Battle;     // 0.0 ~ 0.1 사이다.
+    }
+    else if (Rate < (BattleRate + HealRate))
+    {
+        Result = RI_Heal;       // 0.1 ~ 0.2 사이다.
+    }
+    else if (Rate < (BattleRate + HealRate + TresureRate))
+    {
+        Result = RI_Treasure;   // 0.2 ~ 0.3 사이다.
+    }
+    return  Result;    
 }
 
 bool Battle(int& PlayerHealth)
@@ -305,6 +353,30 @@ bool Battle(int& PlayerHealth)
     }
 
     return PlayerHealth > 0;    // 플레이어의 체력이 남은채 while이 끝났으면 플레이어가 이긴것
+}
+
+void Heal(int& PlayerHealth, int MaxHealth)
+{
+    const int HealMin = 10;
+    const int HealMax = 30;
+
+    int HealAmount = GetRandomRange(HealMin, HealMax);
+    printf("회복의 샘을 발견했습니다.\n[%d]만큼의 체력을 회복합니다.\n", HealAmount);
+    PlayerHealth += HealAmount;   // 랜덤하게 회복
+    if (PlayerHealth > MaxHealth)
+    {
+        PlayerHealth = MaxHealth;   // 최대치까지만 회복
+    }
+}
+
+void Treasure(int& PlayerMoney)
+{
+    const int TreasureMin = 100;
+    const int TreasureMax = 500;
+
+    int TreasureAmount = GetRandomRange(TreasureMin, TreasureMax);
+    printf("보물을 발견했습니다.\n[%d]만큼의 돈을 획득합니다.\n", TreasureAmount);
+    PlayerMoney += TreasureAmount;
 }
 
 int GetSum(int Number)
@@ -348,5 +420,10 @@ int GetSum(const char* NumberString)
     }
     
     return Sum;
+}
+
+MazeTile GetMazeData(int X, int Y)
+{    
+    return (MazeTile)Maze[X + MazeWidth * Y];
 }
 
