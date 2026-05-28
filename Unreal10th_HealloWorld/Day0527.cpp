@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string.h>
 #include "Day0527.h"
+#include "Utils.h"
 
 void Day0527()
 {
@@ -106,11 +107,11 @@ void Day0527()
 	for (int i = 0; i < TestCount2; i++)
 	{
 		const char* Case = TestCasePass2[i];
-		if (MyAtoF(Case) == TestCaseResult2[i])
+		if (IsFloatEqual(MyAtoF(Case), TestCaseResult2[i]))
 			PassCount2++;
 		else
 			FailCount2++;
-		printf("[%s] = [%f] : %s\n", Case, MyAtoF(Case), MyAtoF(Case) == TestCaseResult2[i] ? "Pass" : "Fail");
+		printf("[%s] = [%f] : %s\n", Case, MyAtoF(Case), IsFloatEqual(MyAtoF(Case), TestCaseResult2[i]) ? "Pass" : "Fail");
 	}
 	printf("PassCount : %d, FailCount : %d\n", PassCount2, FailCount2);
 	if (FailCount2 > 0)
@@ -125,11 +126,11 @@ void Day0527()
 	for (int i = 0; i < TestCount2; i++)
 	{
 		const char* Case = TestCaseFail2[i];
-		if (MyAtoF(Case) == 0)
+		if (IsFloatEqual(MyAtoF(Case), 0.0f))
 			PassCount2++;
 		else
 			FailCount2++;
-		printf("[%s] = [%f] : %s\n", Case, MyAtoF(Case), MyAtoF(Case) == 0 ? "Pass" : "Fail");
+		printf("[%s] = [%f] : %s\n", Case, MyAtoF(Case), IsFloatEqual(MyAtoF(Case), 0.0f) ? "Pass" : "Fail");
 	}
 	printf("PassCount : %d, FailCount : %d\n", PassCount2, FailCount2);
 	if (FailCount2 > 0)

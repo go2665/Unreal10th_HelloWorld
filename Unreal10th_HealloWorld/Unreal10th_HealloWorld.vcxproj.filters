@@ -45,6 +45,12 @@
     <ClCompile Include="Day0527.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Day0528.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Day0515.h">
@@ -81,6 +87,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Day0527.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Day0528.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
