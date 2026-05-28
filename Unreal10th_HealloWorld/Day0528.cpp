@@ -173,6 +173,38 @@ void Day0528_Structure()
 	Enemy* HighOrc = new Enemy();
 	delete HighOrc;
 	HighOrc = nullptr;
+
+	PrintEnemyData(Orc);
+	PrintEnemyData(&Orc);
+
+	// 생성자
+	//	- 구조체나 클래스의 객체가 만들어 질때(인스턴스 생성시) 자동으로 호출되는 특별한 함수 같은 것
+	//	- 주로 맴버 변수 초기화에 사용
+	//	- 특징
+	//		- 이름이 구조체 이름과 같다.
+	//		- 반환형이 없다
+	//		- 객체가 생성될때 자동으로 호출
+	//		- 생성자가 여러개 일 수도 있다.
+
+	// 초기화 방법
+	// 1. 맴버 직접 초기화
+	//		- 구조체 선언할 때 직접 값을 넣어 놓는 것
+	// 2. 중괄호 초기화
+	//		- 인스턴스를 생성할 때 한번에 만드는 방식
+	// 3. 생성자 초기화 리스트
+	//		- 생성자에서 맴버가 선언된 순서대로 데이터 설정
+	// 4. 생성자 내부 대입
+	//		- 이미 생성된 객체에 값을 대입 처리
+	//		- 별도의 추가 연산이라 속도가 위 방법들에 비해 늦다.
+
+
+	int Test[] = { 1,2,3,4,5 };
+	EnemyOrc TestOrc = { std::string("쓰랄"), 200.0f, 50.0f, 100 };	// 2. 중괄호 초기화
+	PrintEnemyData(&TestOrc);
+	EnemyOrc* TestOrc2 = new EnemyOrc(3.0f);
+	PrintEnemyData(TestOrc2);
+	delete TestOrc2;
+	TestOrc2 = nullptr;
 }
 
 void FindCharacter(const std::string& Str, const char Target)
@@ -197,4 +229,29 @@ void TestStruct(Enemy Target)
 {
 	printf("오크의 이름은 [%s]입니다.\n", Target.Name.c_str());
 	printf("오크의 체력은 [%.1f]입니다.\n", Target.Health);
+}
+
+void PrintEnemyData(Enemy& Target)
+{
+	printf("적의 이름은 [%s]입니다.\n", Target.Name.c_str());
+	printf("적의 체력은 [%.1f]입니다.\n", Target.Health);
+	printf("적의 공격력은 [%.1f]입니다.\n", Target.AttackPower);
+	printf("적의 보상은 [%d]입니다.\n", Target.Reward);
+}
+
+void PrintEnemyData(Enemy* Target)
+{
+	printf("적의 이름은 [%s]입니다.\n",		Target->Name.c_str());
+	printf("적의 체력은 [%.1f]입니다.\n",		Target->Health);
+	printf("적의 공격력은 [%.1f]입니다.\n",	Target->AttackPower);
+	printf("적의 보상은 [%d]입니다.\n",		Target->Reward);
+	//(*Target).Health; // 이것도 가능
+}
+
+void PrintEnemyData(EnemyOrc* Target)
+{
+	printf("적의 이름은 [%s]입니다.\n", Target->Name.c_str());
+	printf("적의 체력은 [%.1f]입니다.\n", Target->Health);
+	printf("적의 공격력은 [%.1f]입니다.\n", Target->AttackPower);
+	printf("적의 보상은 [%d]입니다.\n", Target->Reward);
 }
