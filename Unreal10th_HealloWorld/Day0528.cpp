@@ -7,6 +7,14 @@ using namespace std;
 
 void Day0528()
 {
+	//Day0528_String();
+	//Day0528_FileIO();
+	Day0528_Structure();
+
+}
+
+void Day0528_String()
+{
 	// 파싱(Parsing)
 	//	- 문자열이나 데이터 구조를 분석하여 의미있는 정보로 변환하는 과정
 	//	- csv, json, xml 등등
@@ -31,7 +39,7 @@ void Day0528()
 	//	- C++의 문자열 타입
 
 	const char* Temp = "Hello World!\n";	// C 스타일의 문자열
-	std::string Str1 = "Hello";			
+	std::string Str1 = "Hello";
 	printf("%s\n", Str1.c_str());
 	string Str2 = "World!";
 	printf("%s\n", Str2.c_str());
@@ -67,7 +75,7 @@ void Day0528()
 	printf("%s에서 'e'는 %d 인덱스에 있습니다.\n", Str1.c_str(), ePos);
 
 	// 특정 문자열 모두 찾기
-	size_t Pos = Str1.find('l');	
+	size_t Pos = Str1.find('l');
 	while (Pos != string::npos)	// npos는 못찾았을 경우
 	{
 		printf("%s에서 'l'은 %d 인덱스에 있습니다.\n", Str1.c_str(), (int)Pos);
@@ -85,8 +93,10 @@ void Day0528()
 	FindCharacter("Hello", 'l');
 	FindCharacter(Str1, 'o');
 	FindCharacter(Str1, 'x');
+}
 
-
+void Day0528_FileIO()
+{
 	// 파일입력
 	const string FilePath = ".\\Data\\DataFile.txt";	// .은 현재 워킹 폴더(기본적으로 파일이 실행되는 곳)
 	std::ifstream InputFile(FilePath);	// 입력용 파일스트림 만들기
@@ -119,6 +129,50 @@ void Day0528()
 	{
 		printf("파일을 생성하는데 실패했습니다.");
 	}
+
+	// 간단 실습
+	// - 이름과 돈을 입력받고 파일로 저장하기
+	// - 파일을 불러와서 저장된 이름과 돈을 출력하기
+}
+
+void Day0528_Structure()
+{
+	// 구조체(Structure)
+	//	- 관련된 데이터 집합을 표현하는데 사용.
+	//		- 여러 종류의 데이터타입을 하나로 묶어서 사용
+	//	- 프로그램의 가독성과 유지보수성도 향상
+
+
+
+	Enemy Orc;	// Orc라는 변수로 4가지의 정보에 접근 가능
+	Enemy Orcs[5];	// Enemy 5개
+
+	// 인스턴스
+	//	- 변수 그자체
+	//	-  int a; // int타입의 인스턴스 a를 만들었다.
+
+	// 구조체 맴버 접근법
+	//	- .을 이용한다.(실제 인스턴스일 때)
+	//	- ->를 이용한다.(주소를 가지고 있을 때)
+	
+	Orc.Name = "돌쇠";			// .을 이용해 각 맴버에 접근
+	Orc.Health = 100.0f;
+	Orc.AttackPower = 10.0f;
+	Orc.Reward = 5;
+
+	Enemy* OrcAddress = &Orc;
+	printf("오크의 이름은 [%s]입니다.\n", OrcAddress->Name.c_str());
+	printf("오크의 체력은 [%.1f]입니다.\n", OrcAddress->Health);
+
+	TestStruct(Orc);
+	// 간단 실습
+	// Enemy의 데이터를 출력하는 함수 만들기
+	//	- Enemy의 참조를 파라메터로 받는 함수
+	//	- Enemy의 주소를 파라메터로 받는 함수
+
+	Enemy* HighOrc = new Enemy();
+	delete HighOrc;
+	HighOrc = nullptr;
 }
 
 void FindCharacter(const std::string& Str, const char Target)
@@ -137,4 +191,10 @@ void FindCharacter(const std::string& Str, const char Target)
 		// 찾은것이 없다.
 		printf("%s에서 '%c'는 없습니다.\n", Str.c_str(), Target);
 	}
+}
+
+void TestStruct(Enemy Target)
+{
+	printf("오크의 이름은 [%s]입니다.\n", Target.Name.c_str());
+	printf("오크의 체력은 [%.1f]입니다.\n", Target.Health);
 }
