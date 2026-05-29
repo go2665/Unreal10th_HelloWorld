@@ -27,8 +27,8 @@ enum RandomIncounterType
 
 // constexpr; : 컴파일 타임에 결정이 되는 상수
 // constexpr int MazeHeight = 10;
-const int MazeHeight = 10;
-const int MazeWidth = 20;
+// const int MazeHeight = 10;
+// const int MazeWidth = 20;
 const int InvalidPosition = -1;
 const int InitHealth = 100;
 
@@ -43,6 +43,23 @@ const char* const ShapeWall = "# ";
 const char* const ShapePath = ". ";
 const char* const ShapeStart = "S ";
 const char* const ShapeEnd = "E ";
+
+// 미로 정보를 저장할 구조체
+struct MazeData
+{
+	unsigned int Width = 0;
+	unsigned int Height = 0;
+	int* Data = nullptr;
+
+	MazeData() = default;
+
+	MazeData(int* InData, int InWidth, int InHeight)
+		:Data(InData), Width(InWidth), Height(InHeight)
+	{
+	}
+};
+
+const char* const MapFilePath = ".\\Data\\MapData.txt";
 
 // extern : 실제 선언은 아니고 다른곳에 이런 변수/함수등이 존재한다고 알려주는 것
 //extern int Maze[MazeHeight][MazeWidth];	
@@ -164,20 +181,29 @@ MazeTile GetMazeData(int X, int Y);
 // 특정 위치의 Maze 타일 정보를 세팅하는 함수
 // void SetMazeData(int X, int Y);
 
-struct MazeData
-{
-	unsigned int Width = 0;
-	unsigned int Height = 0;
-	int* Data = nullptr;
-
-	MazeData() = default;
-
-	MazeData(int* InData, int InWidth, int InHeight)
-		:Data(InData), Width(InWidth), Height(InHeight)
-	{		
-	}
-};
-
+/// <summary>
+/// 지정된 파일을 읽어서 문자열로 리턴하는 함수
+/// </summary>
+/// <param name="Path">파일 전체 경로(Full Path)</param>
+/// <returns>파일에 기록된 문자열</returns>
 std::string ReadFile(const std::string& Path);
+
+/// <summary>
+/// 문자열을 파싱해서 MazeData를 만드는 함수
+/// </summary>
+/// <param name="StringData">원본 데이터 문자열</param>
+/// <returns>파싱한 데이터를 기반으로 새로 만들어진 MazeData</returns>
 MazeData ParseMaze(const std::string& StringData);
+
+/// <summary>
+/// MazeData를 정리하는 함수(할당 해제). ParseMaze가 실행됬다면 반드시 Cleanup을 실행해야한다.
+/// </summary>
+/// <param name="InMazeData">정리할 MazeData</param>
 void CleanupMazeData(MazeData* InMazeData);
+
+/// <summary>
+/// MazeData가 사용가능한 데이터인지 확인하는 함수
+/// </summary>
+/// <param name="InMazeData">확인할 데이터</param>
+/// <returns>true면 사용가능, false면 사용 불가능</returns>
+bool IsValidMazeData(MazeData* InMazeData);

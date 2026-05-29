@@ -18,7 +18,8 @@
 //    {1,0,1,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1},
 //    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 //};
-int* Maze = nullptr;
+//int* Maze = nullptr;
+MazeData Maze;
 
 void Weekend0523()
 {
@@ -47,20 +48,25 @@ void Weekend0523()
 void Weekend0523_Dungeon()
 {
     //int Maze[MazeHeight][MazeWidth];  // 메모리 구조는 똑같다.
-    Maze = new int[MazeHeight * MazeWidth]
-        {
-            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-            1, 2, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1,
-            1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1,
-            1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1,
-            1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1,
-            1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1,
-            1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1,
-            1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3, 1,
-            1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1,
-            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-        };
-    
+    //Maze = new int[MazeHeight * MazeWidth]
+    //    {
+    //        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    //        1, 2, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1,
+    //        1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1,
+    //        1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1,
+    //        1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1,
+    //        1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1,
+    //        1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1,
+    //        1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3, 1,
+    //        1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1,
+    //        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+    //    };
+    std::string MapDataString = ReadFile(MapFilePath);  // 읽고
+    Maze = ParseMaze(MapDataString);    // 파싱하고
+    if (!IsValidMazeData(&Maze))        // 검증
+    {
+        return;
+    }    
 
     int PlayerX = InvalidPosition;
     int PlayerY = InvalidPosition;
@@ -153,17 +159,19 @@ void Weekend0523_Dungeon()
         printf("ERROR!!!!! 맵에 시작위치를 찾을 수 없습니다.!!!\n");
     }
 
-    delete[] Maze;
-    Maze = nullptr;
+    //delete[] Maze;
+    //Maze = nullptr;
+    CleanupMazeData(&Maze);
+
     printf("게임 종료\n");
 }
 
 void FindStart(int& OutX, int& OutY)
 {
     // 이중 for를 통해서 미로 전체를 순회하기
-    for (int y = 0; y < MazeHeight; y++)
+    for (unsigned int y = 0; y < Maze.Height; y++)
     {
-        for (int x = 0; x < MazeWidth; x++)
+        for (unsigned int x = 0; x < Maze.Width; x++)
         {
             if (GetMazeData(x,y) == MazeStart)    // 플레이어 시작점을 찾았으면
             {
@@ -180,9 +188,9 @@ void FindStart(int& OutX, int& OutY)
 void PrintMaze(int PlayerX, int PlayerY)
 {
     // 이중 for를 통해서 미로 전체를 순회하기
-    for (int y = 0; y < MazeHeight; y++)
+    for (unsigned int y = 0; y < Maze.Height; y++)
     {
-        for (int x = 0; x < MazeWidth; x++)
+        for (unsigned int x = 0; x < Maze.Width; x++)
         {
             // 현재 위치에 맞는 모양 찍어주기
             if (PlayerX == x && PlayerY == y)
@@ -254,7 +262,10 @@ int PrintAvailableMoves(int PlayerX, int PlayerY)
 
 bool IsWall(int X, int Y)
 {    
-    return (X < 0 || X >= MazeWidth || Y < 0 || Y >= MazeHeight || GetMazeData(X, Y) == MazeWall);
+    return (
+        X < 0 || X >= static_cast<int>(Maze.Width) 
+        || Y < 0 || Y >= static_cast<int>(Maze.Height) 
+        || GetMazeData(X, Y) == MazeWall);
 }
 
 MoveDirection GetMoveInput(int PlayerX, int PlayerY)
@@ -426,7 +437,7 @@ int GetSum(const char* NumberString)
 
 MazeTile GetMazeData(int X, int Y)
 {    
-    return (MazeTile)Maze[X + MazeWidth * Y];
+    return (MazeTile)(Maze.Data[X + Maze.Width * Y]);
 }
 
 std::string ReadFile(const std::string& Path)
@@ -481,8 +492,8 @@ MazeData ParseMaze(const std::string& StringData)
 
     // 맵 데이터 파싱 시작 지점 설정
     size_t CurrentPosition = FirstLinePosition + 1; // 첫줄 다음 위치
-    int X = 0;
-    int Y = 0;
+    unsigned int X = 0;
+    unsigned int Y = 0;
     while (CurrentPosition < StringData.length() && Y < Height)
     {
         size_t NextComma = StringData.find(',', CurrentPosition);       // 다음 콤마 위치
@@ -542,5 +553,12 @@ void CleanupMazeData(MazeData* InMazeData)
     }
     InMazeData->Width = 0;
     InMazeData->Height = 0;
+}
+
+bool IsValidMazeData(MazeData* InMazeData)
+{
+    // sizeof(배열)/sizeof(배열첫번째) : 동적할당은 안됨
+    
+    return (InMazeData != nullptr) && (InMazeData->Data != nullptr);
 }
 
