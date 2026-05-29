@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 #include <string.h>
 #include "Day0528.h"
 
@@ -7,9 +8,9 @@ using namespace std;
 
 void Day0528()
 {
-	//Day0528_String();
+	Day0528_String();
 	//Day0528_FileIO();
-	Day0528_Structure();
+	//Day0528_Structure();
 
 }
 
@@ -93,6 +94,15 @@ void Day0528_String()
 	FindCharacter("Hello", 'l');
 	FindCharacter(Str1, 'o');
 	FindCharacter(Str1, 'x');
+
+	printf("%s -> %s\n", Str1.c_str(), Str1.substr(1).c_str());
+	printf("%s -> %s\n", Str1.c_str(), Str1.substr(0, 3).c_str());
+	string str6 = "123456789";
+	int integer = std::stoi(str6);
+	printf("%d\n", integer);
+
+	// std::stringstream
+	// std::getline
 }
 
 void Day0528_FileIO()

@@ -163,3 +163,21 @@ MazeTile GetMazeData(int X, int Y);
 
 // 특정 위치의 Maze 타일 정보를 세팅하는 함수
 // void SetMazeData(int X, int Y);
+
+struct MazeData
+{
+	unsigned int Width = 0;
+	unsigned int Height = 0;
+	int* Data = nullptr;
+
+	MazeData() = default;
+
+	MazeData(int* InData, int InWidth, int InHeight)
+		:Data(InData), Width(InWidth), Height(InHeight)
+	{		
+	}
+};
+
+std::string ReadFile(const std::string& Path);
+MazeData ParseMaze(const std::string& StringData);
+void CleanupMazeData(MazeData* InMazeData);

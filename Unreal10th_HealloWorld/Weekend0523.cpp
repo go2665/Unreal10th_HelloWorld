@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+#include <string>
 #include <stdlib.h>
 #include "Weekend0523.h"
 
@@ -425,5 +427,120 @@ int GetSum(const char* NumberString)
 MazeTile GetMazeData(int X, int Y)
 {    
     return (MazeTile)Maze[X + MazeWidth * Y];
+}
+
+std::string ReadFile(const std::string& Path)
+{
+    std::ifstream InputFile(Path);	// 입력용 파일스트림 만들기
+    if (InputFile.is_open())
+    {
+        std::string FileTexts(
+            (std::istreambuf_iterator<char>(InputFile)),
+            std::istreambuf_iterator<char>()
+        );
+        //printf("파일 내용 : \n%s\n", FileTexts.c_str());
+        InputFile.close();
+        return FileTexts;
+    }
+    else
+    {
+        // 파일이 없거나 다른 이유로 열리지 않았다.
+        printf("파일을 열 수 없습니다.\n");        
+    }
+
+    //return "";  // 전통적인 방식
+    return {};
+}
+
+MazeData ParseMaze(const std::string& StringData)
+{
+    if (StringData.empty())
+    {
+        return MazeData();  // 입력 데이터 없으면 그냥 종료
+    }
+
+    size_t FirstLinePosition = StringData.find('\n');      // 첫번째 엔터 찾기
+    if (FirstLinePosition == std::string::npos)
+    {
+        printf("ERROR - 첫번째 줄을 찾을 수 없습니다!!!\n");
+        return MazeData();
+    }
+    std::string FirstLine = StringData.substr(0, FirstLinePosition);    // 첫번째 엔터 위치 이용해서 첫줄 만들기
+    size_t CommaPosition = FirstLine.find(',');
+    if (CommaPosition == std::string::npos)
+    {
+        printf("ERROR - 콤마(,)를 찾을 수 없습니다!!!\n");
+        return MazeData();
+    }
+    // 첫 줄 데이터로 가로 세로 크기 가져오기
+    unsigned int Width = std::stoi(FirstLine.substr(0, CommaPosition)); // 처음 ~ 콤마앞까지
+    unsigned int Height = std::stoi(FirstLine.substr(CommaPosition+1)); // 콤마다음 ~ 끝까지
+
+    // 동적 할당으로 배열 만들기
+    int* MazeArray = new int[Width * Height];
+
+    // 맵 데이터 파싱 시작 지점 설정
+    size_t CurrentPosition = FirstLinePosition + 1; // 첫줄 다음 위치
+    int X = 0;
+    int Y = 0;
+    while (CurrentPosition < StringData.length() && Y < Height)
+    {
+        size_t NextComma = StringData.find(',', CurrentPosition);       // 다음 콤마 위치
+        size_t NextNewLine = StringData.find('\n', CurrentPosition);    // 다음 뉴라인 위치
+        
+        size_t TokenEndPosition = std::string::npos;
+        bool IsLineEnd = false;
+
+        if (NextComma < NextNewLine)
+        {
+            TokenEndPosition = NextComma;   // 콤마까지가 하나의 숫자다
+        }
+        else
+        {
+            TokenEndPosition = NextNewLine; // 줄의 마지막 숫자다
+            IsLineEnd = true;
+        }
+
+        if (TokenEndPosition == std::string::npos)  // 데이터 마지막이다.
+        {
+            TokenEndPosition = StringData.length();
+            IsLineEnd = true;
+        }
+
+        // 값부분만 잘라내기
+        std::string ValueString = StringData.substr(CurrentPosition, TokenEndPosition - CurrentPosition);
+        if (!ValueString.empty())
+        {
+            int Index = X + Y * Width;                      // X와 Y로 인덱스 계산해서
+            *(MazeArray + Index) = std::stoi(ValueString);  // 데이터 설정
+            X++;    // X 증가
+        }
+        else
+        {
+            printf("ERROR - 값을 확인 할 수 없습니다.\n");
+        }
+
+        CurrentPosition = TokenEndPosition + 1; // 현재 위치를 방금 처리한 토큰 다음 위치로 변경
+
+        if (IsLineEnd)  // 줄이 끝났으면
+        {
+            Y++;        // Y 증가시키고
+            X = 0;      // X 0으로 초기화
+        }
+    }
+
+    return MazeData(MazeArray, Width, Height);
+}
+
+void CleanupMazeData(MazeData* InMazeData)
+{
+    // 명시적으로 MazeData를 리셋
+    if (InMazeData->Data)
+    {
+        delete[] InMazeData->Data;
+        InMazeData->Data = nullptr;
+    }
+    InMazeData->Width = 0;
+    InMazeData->Height = 0;
 }
 
