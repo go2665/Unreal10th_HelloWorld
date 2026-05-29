@@ -19,6 +19,9 @@
     <Filter Include="헤더 파일\Practice">
       <UniqueIdentifier>{120efbe4-35ac-499b-9a6b-b1f87df55be7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Maze">
+      <UniqueIdentifier>{57fa3316-9d0f-4a49-b994-19cea161dd37}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Unreal10th_HealloWorld.cpp">
@@ -50,6 +53,12 @@
     </ClCompile>
     <ClCompile Include="Day0528.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Maze</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Maze</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +103,15 @@
     </ClInclude>
     <ClInclude Include="Day0528.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="MazeCommon.h">
+      <Filter>Maze</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

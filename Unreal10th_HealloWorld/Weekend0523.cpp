@@ -2,7 +2,10 @@
 #include <fstream>
 #include <string>
 #include <stdlib.h>
+#include "Utils.h"
 #include "Weekend0523.h"
+#include "Player.h"
+#include "Enemy.h"
 
 // 미로 배열
 //int Maze[MazeHeight][MazeWidth] =
@@ -68,15 +71,11 @@ void Weekend0523_Dungeon()
         return;
     }    
 
-    int PlayerX = InvalidPosition;
-    int PlayerY = InvalidPosition;
-    int PlayerHealth = InitHealth;
-    int PlayerMaxHealth = InitHealth;
-    int PlayerMoney = 0;
+    Player MyPlayer;
 
-    FindStart(PlayerX, PlayerY);    // 시작 위치 찾기
+    FindStart(MyPlayer.X, MyPlayer.Y);    // 시작 위치 찾기
 
-    if (PlayerX != InvalidPosition && PlayerY != InvalidPosition)
+    if (MyPlayer.X != InvalidPosition && MyPlayer.Y != InvalidPosition)
     {
         // 시작 위치를 잘 찾은 정상적인 경우
         printf("\n\n===== 텍스트 미로 탈출 게임 =====\n\n");
@@ -90,31 +89,31 @@ void Weekend0523_Dungeon()
             system("cls"); // 화면 깨끗이 지우기
 
             // 화면 출력
-            PrintMaze(PlayerX, PlayerY);
-            PrintPlayerState(PlayerHealth, PlayerMaxHealth, PlayerMoney);
+            PrintMaze(MyPlayer);
+            PrintPlayerState(MyPlayer);
             
             // 출구에 도달했는지 확인
-            if (IsGoal(PlayerX, PlayerY))
+            if (IsGoal(MyPlayer))
             {
                 printf("축하합니다! 미로를 탈출했습니다!\n\n");
                 break;
             }
 
             // 입력 처리
-            MoveDirection Direction = GetMoveInput(PlayerX, PlayerY);
+            MoveDirection Direction = GetMoveInput(MyPlayer);
             switch (Direction)
             {
             case DirUp:
-                PlayerY--;
+                MyPlayer.Y--;
                 break;
             case DirDown:
-                PlayerY++;
+                MyPlayer.Y++;
                 break;
             case DirLeft:
-                PlayerX--;
+                MyPlayer.X--;
                 break;
             case DirRight:
-                PlayerX++;
+                MyPlayer.X++;
                 break;
             case DirNone:
             default:
@@ -127,7 +126,7 @@ void Weekend0523_Dungeon()
             {
             case RI_Battle:
                 // 전투 시작
-                if (Battle(PlayerHealth))
+                if (Battle(MyPlayer))
                 {
                     printf("승리! 탐색을 계속합니다.\n");
                     Temp = getchar();
@@ -140,11 +139,11 @@ void Weekend0523_Dungeon()
                 }
                 break;
             case RI_Heal:
-                Heal(PlayerHealth, PlayerMaxHealth);
+                Heal(MyPlayer);
                 Temp = getchar();
                 break;
             case RI_Treasure:
-                Treasure(PlayerMoney);
+                Treasure(MyPlayer);
                 Temp = getchar();
                 break;
             case RI_None:
@@ -185,7 +184,7 @@ void FindStart(int& OutX, int& OutY)
     OutY = InvalidPosition;
 }
 
-void PrintMaze(int PlayerX, int PlayerY)
+void PrintMaze(Player& InPlayer)
 {
     // 이중 for를 통해서 미로 전체를 순회하기
     for (unsigned int y = 0; y < Maze.Height; y++)
@@ -193,7 +192,7 @@ void PrintMaze(int PlayerX, int PlayerY)
         for (unsigned int x = 0; x < Maze.Width; x++)
         {
             // 현재 위치에 맞는 모양 찍어주기
-            if (PlayerX == x && PlayerY == y)
+            if (InPlayer.X == x && InPlayer.Y == y)
             {
                 printf(ShapePlayer);    //printf("P ");와 같음                
             }
@@ -218,16 +217,16 @@ void PrintMaze(int PlayerX, int PlayerY)
     }
 }
 
-void PrintPlayerState(int Health, int MaxHealth, int Money)
+void PrintPlayerState(Player& InPlayer)
 {
     printf("┌───────────────────────────────────────────────┐\n");
-    printf("│  HP : [%4d] / [%4d]\t\tMoney : %6d  │\n", Health, MaxHealth, Money);
+    printf("│  HP : [%4d] / [%4d]\t\tMoney : %6d  │\n", InPlayer.Health, InPlayer.MaxHealth, InPlayer.Money);
     printf("└───────────────────────────────────────────────┘\n");
 }
 
-bool IsGoal(int PlayerX, int PlayerY)
+bool IsGoal(Player& InPlayer)
 {
-    return GetMazeData(PlayerX, PlayerY) == MazeEnd;
+    return GetMazeData(InPlayer.X, InPlayer.Y) == MazeEnd;
 }
 
 int PrintAvailableMoves(int PlayerX, int PlayerY)
@@ -268,10 +267,10 @@ bool IsWall(int X, int Y)
         || GetMazeData(X, Y) == MazeWall);
 }
 
-MoveDirection GetMoveInput(int PlayerX, int PlayerY)
+MoveDirection GetMoveInput(Player& InPlayer)
 {
     printf("이동할 방향을 선택하세요 (w:위, s:아래, a:왼쪽, d:오른쪽):\n");
-    int AvailableFlags = PrintAvailableMoves(PlayerX, PlayerY);
+    int AvailableFlags = PrintAvailableMoves(InPlayer.X, InPlayer.Y);
 
     MoveDirection Result = DirNone;
     char Input = 0;
@@ -307,15 +306,6 @@ MoveDirection GetMoveInput(int PlayerX, int PlayerY)
     return Result;
 }
 
-float GetRandom()
-{
-    return rand() / (float)RAND_MAX;   // 0.0f ~ 1.0f
-}
-
-int GetRandomRange(int Min, int Max)
-{
-    return Min + rand() % (Max - Min + 1);  // Min ~ Max(양끝 포함)
-}
 
 RandomIncounterType RandomIncounter()
 {
@@ -336,60 +326,55 @@ RandomIncounterType RandomIncounter()
     return  Result;    
 }
 
-bool Battle(int& PlayerHealth)
+bool Battle(Player& InPlayer)
 {
     const float CriticalRate = 0.1f;
-    const int PlayerMinAttackPower = 5;
-    const int PlayerMaxAttackPower = 15;
-    const int EnemyMinAttackPower = 5;
-    const int EnemyMaxAttackPower = 10;
 
-    int EnemyHealth = 20;
-
-    printf("고블린이 나타났다!! 전투 시작!\n");
+    MazeEnemy Goblin;
+    printf("[%s]이 나타났다!! 전투 시작!\n", Goblin.Name.c_str());
     int Turn = 1;
-    while (PlayerHealth > 0 && EnemyHealth > 0)
+    while (InPlayer.Health > 0 && Goblin.Health > 0)
     {
         // 전투 턴 진행
         printf("------------턴 %d------------\n", Turn);
-        printf("| Player : %3d  Enemy : %3d |\n", PlayerHealth, EnemyHealth);
+        printf("| Player : %3d  Enemy : %3d |\n", InPlayer.Health, Goblin.Health);
         printf("-----------------------------\n");
-        int Damage = GetRandomRange(PlayerMinAttackPower, PlayerMaxAttackPower);
+        int Damage = GetRandomRange(InPlayer.AttackPowerMin, InPlayer.AttackPowerMax);
         printf("당신의 공격 : %d의 데미지를 주었다.\n", Damage);
-        EnemyHealth -= Damage;
-        if (EnemyHealth > 0)
+        Goblin.Health -= Damage;
+        if (Goblin.Health > 0)
         {
-            Damage = GetRandomRange(EnemyMinAttackPower, EnemyMaxAttackPower);
+            Damage = GetRandomRange(Goblin.AttackPowerMin, Goblin.AttackPowerMax);
             printf("적의 공격 : %d의 데미지를 받았다.\n", Damage);
-            PlayerHealth -= Damage;
+            InPlayer.Health -= Damage;
         }
     }
 
-    return PlayerHealth > 0;    // 플레이어의 체력이 남은채 while이 끝났으면 플레이어가 이긴것
+    return InPlayer.Health > 0;    // 플레이어의 체력이 남은채 while이 끝났으면 플레이어가 이긴것
 }
 
-void Heal(int& PlayerHealth, int MaxHealth)
+void Heal(Player& InPlayer)
 {
     const int HealMin = 10;
     const int HealMax = 30;
 
     int HealAmount = GetRandomRange(HealMin, HealMax);
     printf("회복의 샘을 발견했습니다.\n[%d]만큼의 체력을 회복합니다.\n", HealAmount);
-    PlayerHealth += HealAmount;   // 랜덤하게 회복
-    if (PlayerHealth > MaxHealth)
+    InPlayer.Health += HealAmount;   // 랜덤하게 회복
+    if (InPlayer.Health > InPlayer.MaxHealth)
     {
-        PlayerHealth = MaxHealth;   // 최대치까지만 회복
+        InPlayer.Health = InPlayer.MaxHealth;   // 최대치까지만 회복
     }
 }
 
-void Treasure(int& PlayerMoney)
+void Treasure(Player& InPlayer)
 {
     const int TreasureMin = 100;
     const int TreasureMax = 500;
 
     int TreasureAmount = GetRandomRange(TreasureMin, TreasureMax);
     printf("보물을 발견했습니다.\n[%d]만큼의 돈을 획득합니다.\n", TreasureAmount);
-    PlayerMoney += TreasureAmount;
+    InPlayer.Money += TreasureAmount;
 }
 
 int GetSum(int Number)

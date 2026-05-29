@@ -1,4 +1,6 @@
 #pragma once
+#include "MazeCommon.h"
+#include "Player.h"
 
 enum MazeTile
 {
@@ -29,8 +31,6 @@ enum RandomIncounterType
 // constexpr int MazeHeight = 10;
 // const int MazeHeight = 10;
 // const int MazeWidth = 20;
-const int InvalidPosition = -1;
-const int InitHealth = 100;
 
 // 랜덤 인카운터 종류별 확률
 const float BattleRate = 0.1f;
@@ -79,34 +79,29 @@ void FindStart(int& OutX, int& OutY);
 /// <summary>
 /// 미로를 출력하는 함수
 /// </summary>
-/// <param name="PlayerX">플레이어의 현재 X위치</param>
-/// <param name="PlayerY">플레이어의 현재 Y위치</param>
-void PrintMaze(int PlayerX, int PlayerY);
+/// <param name="InPlayer">플레이어 참조</param>
+void PrintMaze(Player& InPlayer);
 
 /// <summary>
 /// 플레이어의 현재 상태 출력하는 함수
 /// </summary>
-/// <param name="Health">플레이어의 체력</param>
-/// <param name="MaxHealth">플레이어의 최대 체력</param>
-/// <param name="Money">플레이어의 돈</param>
-void PrintPlayerState(int Health, int MaxHealth, int Money);
+/// <param name="InPlayer">플레이어 참조</param>
+void PrintPlayerState(Player& InPlayer);
 
 /// <summary>
 /// 플레이어가 도착점에 도착했는지 확인하는 함수
 /// </summary>
-/// <param name="PlayerX">플레이어의 현재 X위치</param> 
-/// <param name="PlayerY">플레이어의 현재 Y위치</param>
+/// <param name="InPlayer">플레이어 참조</param>
 /// <returns>true면 도착점에 있다. false면 도착점에 없다.</returns>
-bool IsGoal(int PlayerX, int PlayerY);
+bool IsGoal(Player& InPlayer);
 //inline bool IsGoal(int PlayerX, int PlayerY) { return Maze[PlayerY][PlayerX] == MazeEnd; }
 
 /// <summary>
 /// 이동 할 수 있는 방향을 출력하고 그 결과를 비트플래그로 반환하는 함수
 /// </summary>
-/// <param name="PlayerX">플레이어의 현재 X위치</param> 
-/// <param name="PlayerY">플레이어의 현재 Y위치</param>
+/// <param name="InPlayer">플레이어 참조</param>
 /// <returns>이동 가능한 방향이 모두 저장된 비트플래그(MoveDirection)</returns>
-int PrintAvailableMoves(int PlayerX, int PlayerY);
+int PrintAvailableMoves(Player& InPlayer);
 
 /// <summary>
 ///	해당 위치가 벽인지 아닌지 확인하는 함수
@@ -119,24 +114,9 @@ bool IsWall(int X, int Y);
 /// <summary>
 /// 이동 방향을 입력받고 해당 방향을 리턴하는 함수
 /// </summary>
-/// <param name="PlayerX">플레이어의 현재 X위치</param> 
-/// <param name="PlayerY">플레이어의 현재 Y위치</param>
+/// <param name="InPlayer">플레이어 참조</param>
 /// <returns>입력받은 방향</returns>
-MoveDirection GetMoveInput(int PlayerX, int PlayerY);
-
-/// <summary>
-/// 0.0f ~ 1.0f 사이를 리턴하는 함수
-/// </summary>
-/// <returns>0.0f ~ 1.0f 사이의 랜덤값</returns>
-float GetRandom();
-
-/// <summary>
-/// Min ~ Max 사이의 랜덤한 값을 리턴하는 함수
-/// </summary>
-/// <param name="Min">랜덤의 최소값(포함)</param> 
-/// <param name="Max">랜덤의 최대값(포함)</param>
-/// <returns>Min ~ Max 사이의 랜덤한 값</returns>
-int GetRandomRange(int Min, int Max);
+MoveDirection GetMoveInput(Player& InPlayer);
 
 /// <summary>
 /// 랜덤 인카운터(전투) 발생 여부 체크하는 함수
@@ -147,22 +127,21 @@ RandomIncounterType RandomIncounter();
 /// <summary>
 /// 전투 랜덤 인카운터 이벤트 처리 함수
 /// </summary>
-/// <param name="PlayerHealth">현재 플레이어의 HP</param>
+/// <param name="InPlayer">플레이어 참조</param>
 /// <returns>true면 플레이어의 승리, false면 패배</returns>
-bool Battle(int& PlayerHealth);
+bool Battle(Player& InPlayer);
 
 /// <summary>
 /// 플레이어 체력회복 랜덤 인카운터 이벤트 처리 함수
 /// </summary>
-/// <param name="PlayerHealth">플레이어의 현재 체력</param>
-/// <param name="MaxHealth">플레이어의 최대 체력</param>
-void Heal(int& PlayerHealth, int MaxHealth);
+/// <param name="InPlayer">플레이어 참조</param>
+void Heal(Player& InPlayer);
 
 /// <summary>
 /// 플레이어 보물 발견 랜덤 인카운터 이벤트 처리함수
 /// </summary>
-/// <param name="PlayerMoney">플레이어의 현재 보유 금액</param>
-void Treasure(int& PlayerMoney);
+/// <param name="InPlayer">플레이어 참조</param>
+void Treasure(Player& Player);
 
 // 자리수 분리해서 합치기(입력은 인티저로 제한)
 int GetSum(int Number);

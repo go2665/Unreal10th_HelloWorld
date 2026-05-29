@@ -129,6 +129,8 @@
     <ClCompile Include="Day0526.cpp" />
     <ClCompile Include="Day0527.cpp" />
     <ClCompile Include="Day0528.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Practice0521_1.cpp" />
     <ClCompile Include="Practice0521_2.cpp" />
     <ClCompile Include="Unreal10th_HealloWorld.cpp" />
@@ -146,6 +148,9 @@
     <ClInclude Include="Day0526.h" />
     <ClInclude Include="Day0527.h" />
     <ClInclude Include="Day0528.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="MazeCommon.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Practice0521_1.h" />
     <ClInclude Include="Practice0521_2.h" />
     <ClInclude Include="Utils.h" />
