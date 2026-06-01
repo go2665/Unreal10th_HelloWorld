@@ -22,13 +22,14 @@ using namespace std;
 int main()  // 코드의 시작점
 {	
 	unsigned int Seed = (unsigned int)time(0);
-	Seed = 0;		// 테스트용으로 임시로 설정
+	//Seed = 2;		// 테스트용으로 임시로 설정
 	srand(Seed);	// 시드값 초기화
 
-	Weekend0523_Dungeon();
+	//Weekend0523_Dungeon();
 	//Day0529();
 
 	//Homework0530_01_Run();
+	Homework0530_02_Run();
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
