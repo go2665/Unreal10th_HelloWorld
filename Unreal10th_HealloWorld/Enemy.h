@@ -17,9 +17,9 @@ struct MazeEnemy
 		AttackPowerMax = GetRandomRange(8, 12);
 		Reward = GetRandomRange(80, 120);
 	}
-	MazeEnemy(const std::string& InName, int InLevel) 
+	MazeEnemy(const std::string& InName, int InLevel)
 		: Name(InName)
-	{ 
+	{
 		Health *= InLevel;
 		AttackPowerMin *= InLevel;
 		AttackPowerMax *= InLevel;
@@ -40,5 +40,48 @@ struct MazeEnemy
 		Result.Reward = Reward + InOther.Reward;
 
 		return Result;
+	}
+
+	MazeEnemy operator-(const MazeEnemy& InOther) const
+	{
+		MazeEnemy Result;
+		Result.Name = "약화된 " + this->Name;
+		Result.AttackPowerMin = (AttackPowerMin - InOther.AttackPowerMin) / 2;
+		if(Result.AttackPowerMin < 1)
+		{
+			Result.AttackPowerMin = 1;
+		}
+		Result.AttackPowerMax = AttackPowerMax - InOther.AttackPowerMax;
+		if (Result.AttackPowerMax < 1)
+		{
+			Result.AttackPowerMax = 1;
+		}
+		if (Result.AttackPowerMax < Result.AttackPowerMin)
+		{
+			Result.AttackPowerMax = Result.AttackPowerMin;
+		}
+		Result.Reward = Reward + InOther.Reward;
+
+		return Result;
+	}
+
+	MazeEnemy operator*(float InOther) const
+	{
+		MazeEnemy Result;
+		Result.Name = this->Name;
+		Result.Health = static_cast<int>(Health * InOther);
+		Result.AttackPowerMin = static_cast<int>(AttackPowerMin * InOther);
+		Result.AttackPowerMax = static_cast<int>(AttackPowerMax * InOther);
+		Result.Reward = static_cast<int>(Reward * InOther);
+		return Result;
+	}
+
+	MazeEnemy& operator*=(float InOther)
+	{		
+		Health = static_cast<int>(Health * InOther);
+		AttackPowerMin = static_cast<int>(AttackPowerMin * InOther);
+		AttackPowerMax = static_cast<int>(AttackPowerMax * InOther);
+		Reward = static_cast<int>(Reward * InOther);
+		return *this;
 	}
 };

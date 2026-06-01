@@ -17,10 +17,18 @@ void Day0529()
 	// 간단 실습
 	// 1. MazeEnemy에 -연산자 오버로딩하기
 	//		E5 = E1 - E2;
+	MazeEnemy E5 = E1 - E2;
+	PrintEnemyInfo(E5);
+
 	// 2. MazeEnemy에 *연산자 오버로딩하기(*의 오른쪽 값은 float)
 	//		E6 = E5 * 2;
+	MazeEnemy E6 = E5 * 2;
+	PrintEnemyInfo(E6);
+
 	// 3. MazeEnemy에 *=연산자 오버로딩하기(*의 오른쪽 값은 float)
 	//		E6 *= 3;
+	E6 *= 3;
+	PrintEnemyInfo(E6);
 }
 
 void PrintEnemyInfo(MazeEnemy& InEnemy)
