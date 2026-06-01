@@ -73,9 +73,9 @@ void Weekend0523_Dungeon()
 
     Player MyPlayer;
 
-    FindStart(MyPlayer.X, MyPlayer.Y);    // 시작 위치 찾기
+    FindStart(MyPlayer.Pos);    // 시작 위치 찾기
 
-    if (MyPlayer.X != InvalidPosition && MyPlayer.Y != InvalidPosition)
+    if (MyPlayer.Pos.X != InvalidPosition && MyPlayer.Pos.Y != InvalidPosition)
     {
         // 시작 위치를 잘 찾은 정상적인 경우
         printf("\n\n===== 텍스트 미로 탈출 게임 =====\n\n");
@@ -104,16 +104,16 @@ void Weekend0523_Dungeon()
             switch (Direction)
             {
             case DirUp:
-                MyPlayer.Y--;
+                MyPlayer.Pos.Y--;
                 break;
             case DirDown:
-                MyPlayer.Y++;
+                MyPlayer.Pos.Y++;
                 break;
             case DirLeft:
-                MyPlayer.X--;
+                MyPlayer.Pos.X--;
                 break;
             case DirRight:
-                MyPlayer.X++;
+                MyPlayer.Pos.X++;
                 break;
             case DirNone:
             default:
@@ -165,7 +165,7 @@ void Weekend0523_Dungeon()
     printf("게임 종료\n");
 }
 
-void FindStart(int& OutX, int& OutY)
+void FindStart(Position& OutPos)
 {
     // 이중 for를 통해서 미로 전체를 순회하기
     for (unsigned int y = 0; y < Maze.Height; y++)
@@ -174,14 +174,14 @@ void FindStart(int& OutX, int& OutY)
         {
             if (GetMazeData(x,y) == MazeStart)    // 플레이어 시작점을 찾았으면
             {
-                OutX = x;   
-                OutY = y;
+                OutPos.X = x;
+                OutPos.Y = y;
                 return;     // 저장하고 함수 종료
             }
         }
     }
-    OutX = InvalidPosition; // 여기는 잘못된 곳이라고 의도를 명확히 써놓는 의미
-    OutY = InvalidPosition;
+    OutPos.X = InvalidPosition; // 여기는 잘못된 곳이라고 의도를 명확히 써놓는 의미
+    OutPos.Y = InvalidPosition;
 }
 
 void PrintMaze(Player& InPlayer)
@@ -192,7 +192,7 @@ void PrintMaze(Player& InPlayer)
         for (unsigned int x = 0; x < Maze.Width; x++)
         {
             // 현재 위치에 맞는 모양 찍어주기
-            if (InPlayer.X == x && InPlayer.Y == y)
+            if (InPlayer.Pos.X == x && InPlayer.Pos.Y == y)
             {
                 printf(ShapePlayer);    //printf("P ");와 같음                
             }
@@ -226,30 +226,30 @@ void PrintPlayerState(Player& InPlayer)
 
 bool IsGoal(Player& InPlayer)
 {
-    return GetMazeData(InPlayer.X, InPlayer.Y) == MazeEnd;
+    return GetMazeData(InPlayer.Pos.X, InPlayer.Pos.Y) == MazeEnd;
 }
 
-int PrintAvailableMoves(int PlayerX, int PlayerY)
+int PrintAvailableMoves(Position& InPos)
 {
     int Flags = DirNone;
 
     // w(↑) s(↓) a(←) d(→)
-    if (!IsWall(PlayerX, PlayerY - 1))
+    if (!IsWall(InPos.X, InPos.Y - 1))
     {
         printf("w(↑) ");
         Flags |= DirUp;
     }
-    if (!IsWall(PlayerX, PlayerY + 1))
+    if (!IsWall(InPos.X, InPos.Y + 1))
     {
         printf("s(↓) ");
         Flags |= DirDown;
     }
-    if (!IsWall(PlayerX - 1, PlayerY))
+    if (!IsWall(InPos.X - 1, InPos.Y))
     {
         printf("a(←) ");
         Flags |= DirLeft;
     }
-    if (!IsWall(PlayerX + 1, PlayerY))
+    if (!IsWall(InPos.X + 1, InPos.Y))
     {
         printf("d(→) ");
         Flags |= DirRight;
@@ -270,7 +270,7 @@ bool IsWall(int X, int Y)
 MoveDirection GetMoveInput(Player& InPlayer)
 {
     printf("이동할 방향을 선택하세요 (w:위, s:아래, a:왼쪽, d:오른쪽):\n");
-    int AvailableFlags = PrintAvailableMoves(InPlayer.X, InPlayer.Y);
+    int AvailableFlags = PrintAvailableMoves(InPlayer.Pos);
 
     MoveDirection Result = DirNone;
     char Input = 0;

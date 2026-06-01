@@ -3,8 +3,7 @@
 
 struct Player
 {
-    int X = InvalidPosition;
-    int Y = InvalidPosition;
+    Position Pos{InvalidPosition, InvalidPosition};
     int Health = InitHealth;
     int MaxHealth = InitHealth;
     int AttackPowerMin = 5;

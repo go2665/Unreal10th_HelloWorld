@@ -72,9 +72,8 @@ void Weekend0523_Dungeon();
 /// <summary>
 /// 시작 위치 찾는 함수
 /// </summary>
-/// <param name="OutX">시작 X 위치(출력용)</param>
-/// <param name="OutY">시작 Y 위치(출력용)</param>
-void FindStart(int& OutX, int& OutY);
+/// <param name="OutPos">시작 위치(출력용)</param>
+void FindStart(Position& OutPos);
 
 /// <summary>
 /// 미로를 출력하는 함수
@@ -99,9 +98,9 @@ bool IsGoal(Player& InPlayer);
 /// <summary>
 /// 이동 할 수 있는 방향을 출력하고 그 결과를 비트플래그로 반환하는 함수
 /// </summary>
-/// <param name="InPlayer">플레이어 참조</param>
+/// <param name="InPos">위치 참조</param>
 /// <returns>이동 가능한 방향이 모두 저장된 비트플래그(MoveDirection)</returns>
-int PrintAvailableMoves(Player& InPlayer);
+int PrintAvailableMoves(Position& InPos);
 
 /// <summary>
 ///	해당 위치가 벽인지 아닌지 확인하는 함수
