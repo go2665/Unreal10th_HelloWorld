@@ -66,6 +66,9 @@
     <ClCompile Include="Weenend0530.cpp">
       <Filter>소스 파일\Practice</Filter>
     </ClCompile>
+    <ClCompile Include="Day0602.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Day0515.h">
@@ -124,6 +127,9 @@
     </ClInclude>
     <ClInclude Include="Weenend0530.h">
       <Filter>헤더 파일\Practice</Filter>
+    </ClInclude>
+    <ClInclude Include="Day0602.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
