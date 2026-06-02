@@ -3,6 +3,8 @@
 #include <string>
 
 void Day0602();
+void Day0602_class();
+void Day0602_virtual();
 // 객체 지향
 //	- 프로그래밍 패러다임 중 하나.
 //	- 객체(Object)를 만들고 객체간의 상호작용으로 프로그램이 돌아가게 만드는 방식.
@@ -60,6 +62,10 @@ void Day0602();
 //		- 계층구조로 객체들간의 관계를 명확히 함
 //		- 부모 클래스의 포인터나 참조로 자식 클래스를 다룰 수 있다.
 
+// 가상함수
+//	- virtual 키워드 사용
+//	- 함수를 선언할 때 가상함수로 만들 맴버 함수 앞에서 붙인다.
+//	- 가상함수가 있는 클래스를 상속받은 자식클래스는 해당함수를 override(덮어쓰기) 할 수 있다.
 
 class Animal
 {
@@ -90,7 +96,7 @@ public:
 
 	// 맴버 함수
 	void Move();		// 움직이기
-	void MakeSound();	// 소리내기
+	virtual void MakeSound();	// 소리내기(가상함수)
 	void Eat();			// 먹기
 	void Sleep();		// 자기
 	void ShowInfo();	// 자신의 모든 정보 출력
@@ -127,9 +133,51 @@ public:
 	Eagle(const std::string& InName)
 		:Animal(InName)
 	{   }
+	virtual ~Eagle() = default;			// 상속받았는데 소멸자를 만들었으면 무조건 virtual을 붙여라.
 
 	void Fly();
+	virtual void MakeSound() override;	// 가상함수를 덮어쓰기 하겠다.
 
 private:
 	const float FlyEnergy = 20.0f;
 };
+
+class Tiger : public Animal
+{
+public:
+	Tiger()
+		:Animal()
+	{
+	}
+	Tiger(const std::string& InName)
+		:Animal(InName)
+	{
+	}
+	virtual ~Tiger() = default;
+
+	void Roar();
+	virtual void MakeSound() override;	// 가상함수를 덮어쓰기 하겠다.
+};
+
+class Whale : public Animal
+{
+public:
+	Whale()
+		:Animal()
+	{
+	}
+	Whale(const std::string& InName)
+		:Animal(InName)
+	{
+	}
+	virtual ~Whale() = default;
+
+	void Swim();
+	virtual void MakeSound() override;	// 가상함수를 덮어쓰기 하겠다.
+};
+
+// 간단 실습
+// Move함수를 가상함수로 만들어 처리하기
+//	- 고래는 수영
+//	- 독수리는 날기
+//	- 호랑이는 뛰기
