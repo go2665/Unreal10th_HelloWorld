@@ -66,6 +66,7 @@ void Day0602_virtual();
 //	- virtual 키워드 사용
 //	- 함수를 선언할 때 가상함수로 만들 맴버 함수 앞에서 붙인다.
 //	- 가상함수가 있는 클래스를 상속받은 자식클래스는 해당함수를 override(덮어쓰기) 할 수 있다.
+//  - 상속하거나 상속받았는데 소멸자를 만들었으면 무조건 virtual을 붙여라.
 
 class Animal
 {
@@ -133,7 +134,7 @@ public:
 	Eagle(const std::string& InName)
 		:Animal(InName)
 	{   }
-	virtual ~Eagle() = default;			// 상속받았는데 소멸자를 만들었으면 무조건 virtual을 붙여라.
+	virtual ~Eagle() = default;			// 상속하거나 상속받았는데 소멸자를 만들었으면 무조건 virtual을 붙여라.
 
 	void Fly();
 	virtual void MakeSound() override;	// 가상함수를 덮어쓰기 하겠다.
