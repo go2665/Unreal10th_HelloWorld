@@ -16,6 +16,7 @@
 #include "Day0528.h"
 #include "Day0529.h"
 #include "Weenend0530.h"
+#include "Day0602.h"
 
 using namespace std;
 
@@ -30,6 +31,7 @@ int main()  // 코드의 시작점
 
 	//Homework0530_01_Run();
 	//Homework0530_02_Run();
+	Day0602();
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
