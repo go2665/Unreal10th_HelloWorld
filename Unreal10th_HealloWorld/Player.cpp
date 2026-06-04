@@ -2,7 +2,7 @@
 
 void Player::Attack(Actor* InTarget) const
 {
-	printf("당신이 공격합니다.\n");
+	printf("[%s] : 당신이 공격합니다.\n", Name.c_str());
 	Actor::Attack(InTarget);	// Player가 상속받은 Actor 클래스의 Attack 함수 사용하기
 }
 

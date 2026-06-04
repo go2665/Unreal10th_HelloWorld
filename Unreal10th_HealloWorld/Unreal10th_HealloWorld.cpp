@@ -19,6 +19,7 @@
 #include "Day0602.h"
 #include "Practice0604.h"
 #include "MazeGame.h"
+#include "MonsterList.h"
 
 using namespace std;
 
@@ -40,6 +41,7 @@ int main()  // 코드의 시작점
 
 	MazeGame Game;
 	Game.GameStart();
+
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴

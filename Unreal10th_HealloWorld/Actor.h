@@ -17,6 +17,7 @@ public:
         if (Health > MaxHealth)
             Health = MaxHealth;
     }
+    inline const char* GetName() const { return Name.c_str(); }
 
 public:
     Actor() = default;

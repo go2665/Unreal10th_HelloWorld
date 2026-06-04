@@ -3,5 +3,5 @@
 
 void Day0529();
 
-void PrintEnemyInfo(MazeEnemy& InEnemy);
-MazeEnemy FusionEnemy(MazeEnemy& InEnemy1, MazeEnemy& InEnemy2);
+void PrintEnemyInfo(Deprecated_MazeEnemy& InEnemy);
+Deprecated_MazeEnemy FusionEnemy(Deprecated_MazeEnemy& InEnemy1, Deprecated_MazeEnemy& InEnemy2);

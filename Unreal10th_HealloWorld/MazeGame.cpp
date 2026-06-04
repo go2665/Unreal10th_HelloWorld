@@ -1,8 +1,9 @@
 #include <iostream>
 #include <fstream>
+#include "Utils.h"
 #include "MazeGame.h"
 #include "Player.h"
-#include "Enemy.h"
+#include "MonsterList.h"
 
 void MazeGame::GameStart()
 {
@@ -271,26 +272,56 @@ RandomIncounterType MazeGame::RandomIncounter()
     return  Result;   
 }
 
-bool MazeGame::EventBattle(const Player* InUser)
+bool MazeGame::EventBattle(Player* InUser)
 {
-    MazeEnemy Goblin;
-    printf("[%s]이 나타났다!! 전투 시작!\n", Goblin.Name.c_str());
+    Monster* Enemy = nullptr;
+
+    enum MonsterType
+    {
+        SlimeType = 0,
+        OrcType,
+        GoblinType,
+        NUM_OF_MONSTER_TYPE
+    };
+
+    MonsterType Type = (MonsterType)(GetRandomRange(0, NUM_OF_MONSTER_TYPE - 1));
+    switch (Type)
+    {
+    case SlimeType:
+        Enemy = new Slime();
+        break;
+    case OrcType:
+        Enemy = new Orc();
+        break;
+    case GoblinType:
+        Enemy = new Goblin();
+        break;
+    case NUM_OF_MONSTER_TYPE:
+    default:
+        Enemy = new Monster();
+        break;
+    }
+
+    printf("[%s]이 나타났다!! 전투 시작!\n", Enemy->GetName());
     int Turn = 1;
 
-    while (InUser->IsAlive() && Goblin.Health > 0)
+    while (InUser->IsAlive() && Enemy->IsAlive())
     {
         // 전투 턴 진행
         printf("------------턴 %d------------\n", Turn);
         InUser->PrintStatus();
-        printf("| Enemy : %3d |\n", Goblin.Health);
+        Enemy->PrintStatus();
         printf("-----------------------------\n");
-        //InUser->Attack(Enemy);  // 나중에 Enemy만들고 수정
-        Goblin.Health = 0;  // 테스트용 코드
-        if (Goblin.Health > 0)
+        InUser->Attack(Enemy);
+        if (Enemy->IsAlive())
         {
-            // 나중에 Enemy만들고 Enemy가 InUser를 Attack하게 만들기
+            Enemy->Attack(InUser);
         }
+        Turn++;
     }
+
+    delete Enemy;
+    Enemy = nullptr;
 
     return InUser->IsAlive();    // 플레이어의 체력이 남은채 while이 끝났으면 플레이어가 이긴것}
 }

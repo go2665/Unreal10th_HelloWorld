@@ -2,7 +2,7 @@
 #include <string>
 #include "Utils.h"
 
-struct MazeEnemy
+struct Deprecated_MazeEnemy
 {
 	std::string Name = "고블린";
 	int Health = 20;
@@ -10,14 +10,14 @@ struct MazeEnemy
 	int AttackPowerMax = 10;
 	int Reward = 100;
 
-	MazeEnemy()
+	Deprecated_MazeEnemy()
 	{
 		Health = GetRandomRange(15, 25);
 		AttackPowerMin = GetRandomRange(3, 7);
 		AttackPowerMax = GetRandomRange(8, 12);
 		Reward = GetRandomRange(80, 120);
 	}
-	MazeEnemy(const std::string& InName, int InLevel)
+	Deprecated_MazeEnemy(const std::string& InName, int InLevel)
 		: Name(InName)
 	{
 		Health *= InLevel;
@@ -29,11 +29,11 @@ struct MazeEnemy
 	// +연산자를 오버로딩 한다.
 	// 결과는 MazeEnemy타입으로 나온다.
 	// 계산 대상은 나와 InOther다.
-	MazeEnemy operator+(const MazeEnemy& InOther) const	// 이 const는 맴버를 수정하지 않는다.(읽기 전용이다.)
+	Deprecated_MazeEnemy operator+(const Deprecated_MazeEnemy& InOther) const	// 이 const는 맴버를 수정하지 않는다.(읽기 전용이다.)
 	{
 		//	Health = 20; // const 때문에 안된다.
 
-		MazeEnemy Result;
+		Deprecated_MazeEnemy Result;
 		Result.Name = this->Name + InOther.Name;	// this : 자기 자신의 주소
 		Result.AttackPowerMin = (AttackPowerMin + InOther.AttackPowerMin) / 2;
 		Result.AttackPowerMax = AttackPowerMax + InOther.AttackPowerMax;
@@ -42,9 +42,9 @@ struct MazeEnemy
 		return Result;
 	}
 
-	MazeEnemy operator-(const MazeEnemy& InOther) const
+	Deprecated_MazeEnemy operator-(const Deprecated_MazeEnemy& InOther) const
 	{
-		MazeEnemy Result;
+		Deprecated_MazeEnemy Result;
 		Result.Name = "약화된 " + this->Name;
 		Result.AttackPowerMin = (AttackPowerMin - InOther.AttackPowerMin) / 2;
 		if(Result.AttackPowerMin < 1)
@@ -65,9 +65,9 @@ struct MazeEnemy
 		return Result;
 	}
 
-	MazeEnemy operator*(float InOther) const
+	Deprecated_MazeEnemy operator*(float InOther) const
 	{
-		MazeEnemy Result;
+		Deprecated_MazeEnemy Result;
 		Result.Name = this->Name;
 		Result.Health = static_cast<int>(Health * InOther);
 		Result.AttackPowerMin = static_cast<int>(AttackPowerMin * InOther);
@@ -76,7 +76,7 @@ struct MazeEnemy
 		return Result;
 	}
 
-	MazeEnemy& operator*=(float InOther)
+	Deprecated_MazeEnemy& operator*=(float InOther)
 	{		
 		Health = static_cast<int>(Health * InOther);
 		AttackPowerMin = static_cast<int>(AttackPowerMin * InOther);

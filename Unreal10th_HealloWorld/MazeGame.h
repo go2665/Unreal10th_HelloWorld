@@ -123,7 +123,7 @@ private:
 	/// </summary>
 	/// <param name="InPlayer">유저의 주소</param>
 	/// <returns>true면 플레이어의 승리, false면 패배</returns>
-	bool EventBattle(const Player* InUser);
+	bool EventBattle(Player* InUser);
 
 	/// <summary>
 	/// 플레이어 체력회복 랜덤 인카운터 이벤트 처리 함수

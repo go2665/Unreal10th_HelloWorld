@@ -13,7 +13,7 @@ void Actor::Attack(Actor* InTarget) const
 
 void Actor::Die()
 {
-	printf("[%s]가 죽었습니다.\n", Name.c_str());
+	printf("[%s] : [%s]가 죽었습니다.\n", Name.c_str(), Name.c_str());
 }
 
 void Actor::PrintStatus() const
@@ -43,7 +43,7 @@ void Actor::ApplyDamage(Actor* InTagrget, int InDamage) const
 
 void Actor::TakeDamage(int InDamage)
 {
-	printf("피격 당했습니다! [%d]의 데미지를 입었습니다.\n", InDamage);
+	printf("[%s] : 피격 당했습니다! [%d]의 데미지를 입었습니다.\n", Name.c_str(), InDamage);
 	Health -= InDamage;
 	if (Health <= 0)
 	{
@@ -55,5 +55,10 @@ void Actor::TakeDamage(int InDamage)
 
 int Actor::CalcDamage() const
 {
-	return GetRandomRange(AttackPowerMin, AttackPowerMax);
+	int Damage = GetRandomRange(AttackPowerMin, AttackPowerMax);
+	if (GetRandom() < CriticalRate)
+	{
+		Damage = static_cast<int>(Damage * 1.5f);
+	}
+	return Damage;
 }
