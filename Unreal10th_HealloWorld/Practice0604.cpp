@@ -3,8 +3,8 @@
 
 void Practice0604::Test()
 {
-	Actor* pTestActor1 = new Actor("테스터 1번", 300, 5, 15);
-	Actor* pTestActor2 = new Actor("테스터 2번", 100, 5, 15);
+	Actor* pTestActor1 = new Actor("테스터 1번", 300, 5, 15, 0.1f);
+	Actor* pTestActor2 = new Actor("테스터 2번", 100, 5, 15, 0.1f);
 	pTestActor1->PrintStatus();
 	pTestActor2->PrintStatus();
 	while (pTestActor2->IsAlive())

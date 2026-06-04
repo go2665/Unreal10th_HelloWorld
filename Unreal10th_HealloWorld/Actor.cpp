@@ -2,7 +2,7 @@
 #include "Actor.h"
 #include "Utils.h"
 
-void Actor::Attack(Actor* InTarget)
+void Actor::Attack(Actor* InTarget) const
 {
 	if (InTarget)
 	{
@@ -16,7 +16,7 @@ void Actor::Die()
 	printf("[%s]가 죽었습니다.\n", Name.c_str());
 }
 
-void Actor::PrintStatus()
+void Actor::PrintStatus() const
 {
 	printf("-------------------------------------------\n");	
 	int Ratio = static_cast<int>((Health / static_cast<float>(MaxHealth)) * 10.0f);
@@ -29,11 +29,11 @@ void Actor::PrintStatus()
 	{
 		printf("□");
 	}
-	printf("( %d / %d )\n", Health, MaxHealth);
+	printf(" ( %d / %d )\n", Health, MaxHealth);
 	printf("-------------------------------------------\n");
 }
 
-void Actor::ApplyDamage(Actor* InTagrget, int InDamage)
+void Actor::ApplyDamage(Actor* InTagrget, int InDamage) const
 {
 	if (InTagrget)
 	{
@@ -53,7 +53,7 @@ void Actor::TakeDamage(int InDamage)
 	PrintStatus();
 }
 
-int Actor::CalcDamage()
+int Actor::CalcDamage() const
 {
 	return GetRandomRange(AttackPowerMin, AttackPowerMax);
 }

@@ -18,6 +18,7 @@
 #include "Weenend0530.h"
 #include "Day0602.h"
 #include "Practice0604.h"
+#include "MazeGame.h"
 
 using namespace std;
 
@@ -34,8 +35,11 @@ int main()  // 코드의 시작점
 	//Homework0530_02_Run();
 	//Day0602();
 
-	Practice0604 Test0604;
-	Test0604.Test();
+	//Practice0604 Test0604;
+	//Test0604.Test();
+
+	MazeGame Game;
+	Game.GameStart();
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴

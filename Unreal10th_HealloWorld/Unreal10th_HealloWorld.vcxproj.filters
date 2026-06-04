@@ -75,6 +75,9 @@
     <ClCompile Include="Practice0604.cpp">
       <Filter>소스 파일\Practice</Filter>
     </ClCompile>
+    <ClCompile Include="MazeGame.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Day0515.h">
@@ -142,6 +145,9 @@
     </ClInclude>
     <ClInclude Include="Practice0604.h">
       <Filter>헤더 파일\Practice</Filter>
+    </ClInclude>
+    <ClInclude Include="MazeGame.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
