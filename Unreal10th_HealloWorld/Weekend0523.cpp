@@ -71,7 +71,7 @@ void Weekend0523_Dungeon()
         return;
     }    
 
-    Player MyPlayer;
+    Deprecated_Player MyPlayer;
 
     FindStart(MyPlayer.Pos);    // 시작 위치 찾기
 
@@ -184,7 +184,7 @@ void FindStart(Position& OutPos)
     OutPos.Y = InvalidPosition;
 }
 
-void PrintMaze(Player& InPlayer)
+void PrintMaze(Deprecated_Player& InPlayer)
 {
     // 이중 for를 통해서 미로 전체를 순회하기
     for (unsigned int y = 0; y < Maze.Height; y++)
@@ -217,14 +217,14 @@ void PrintMaze(Player& InPlayer)
     }
 }
 
-void PrintPlayerState(Player& InPlayer)
+void PrintPlayerState(Deprecated_Player& InPlayer)
 {
     printf("┌───────────────────────────────────────────────┐\n");
     printf("│  HP : [%4d] / [%4d]\t\tMoney : %6d  │\n", InPlayer.Health, InPlayer.MaxHealth, InPlayer.Money);
     printf("└───────────────────────────────────────────────┘\n");
 }
 
-bool IsGoal(Player& InPlayer)
+bool IsGoal(Deprecated_Player& InPlayer)
 {
     return GetMazeData(InPlayer.Pos.X, InPlayer.Pos.Y) == MazeEnd;
 }
@@ -267,7 +267,7 @@ bool IsWall(int X, int Y)
         || GetMazeData(X, Y) == MazeWall);
 }
 
-MoveDirection GetMoveInput(Player& InPlayer)
+MoveDirection GetMoveInput(Deprecated_Player& InPlayer)
 {
     printf("이동할 방향을 선택하세요 (w:위, s:아래, a:왼쪽, d:오른쪽):\n");
     int AvailableFlags = PrintAvailableMoves(InPlayer.Pos);
@@ -326,7 +326,7 @@ RandomIncounterType RandomIncounter()
     return  Result;    
 }
 
-bool Battle(Player& InPlayer)
+bool Battle(Deprecated_Player& InPlayer)
 {
     const float CriticalRate = 0.1f;
 
@@ -353,7 +353,7 @@ bool Battle(Player& InPlayer)
     return InPlayer.Health > 0;    // 플레이어의 체력이 남은채 while이 끝났으면 플레이어가 이긴것
 }
 
-void Heal(Player& InPlayer)
+void Heal(Deprecated_Player& InPlayer)
 {
     const int HealMin = 10;
     const int HealMax = 30;
@@ -367,7 +367,7 @@ void Heal(Player& InPlayer)
     }
 }
 
-void Treasure(Player& InPlayer)
+void Treasure(Deprecated_Player& InPlayer)
 {
     const int TreasureMin = 100;
     const int TreasureMax = 500;

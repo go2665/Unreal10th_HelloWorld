@@ -124,6 +124,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Day0521_2.cpp" />
     <ClCompile Include="Day0522.cpp" />
     <ClCompile Include="Day0526.cpp" />
@@ -135,12 +136,14 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Practice0521_1.cpp" />
     <ClCompile Include="Practice0521_2.cpp" />
+    <ClCompile Include="Practice0604.cpp" />
     <ClCompile Include="Unreal10th_HealloWorld.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="Weekend0523.cpp" />
     <ClCompile Include="Weenend0530.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Actor.h" />
     <ClInclude Include="Day0519.h" />
     <ClInclude Include="Day0515.h" />
     <ClInclude Include="Day0518.h" />
@@ -158,6 +161,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Practice0521_1.h" />
     <ClInclude Include="Practice0521_2.h" />
+    <ClInclude Include="Practice0604.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Weekend0523.h" />
     <ClInclude Include="Weenend0530.h" />

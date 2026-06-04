@@ -1,7 +1,7 @@
 #pragma once
 #include "MazeCommon.h"
 
-struct Player
+struct Deprecated_Player
 {
     Position Pos{InvalidPosition, InvalidPosition};
     int Health = InitHealth;

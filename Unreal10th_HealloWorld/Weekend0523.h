@@ -79,20 +79,20 @@ void FindStart(Position& OutPos);
 /// 미로를 출력하는 함수
 /// </summary>
 /// <param name="InPlayer">플레이어 참조</param>
-void PrintMaze(Player& InPlayer);
+void PrintMaze(Deprecated_Player& InPlayer);
 
 /// <summary>
 /// 플레이어의 현재 상태 출력하는 함수
 /// </summary>
 /// <param name="InPlayer">플레이어 참조</param>
-void PrintPlayerState(Player& InPlayer);
+void PrintPlayerState(Deprecated_Player& InPlayer);
 
 /// <summary>
 /// 플레이어가 도착점에 도착했는지 확인하는 함수
 /// </summary>
 /// <param name="InPlayer">플레이어 참조</param>
 /// <returns>true면 도착점에 있다. false면 도착점에 없다.</returns>
-bool IsGoal(Player& InPlayer);
+bool IsGoal(Deprecated_Player& InPlayer);
 //inline bool IsGoal(int PlayerX, int PlayerY) { return Maze[PlayerY][PlayerX] == MazeEnd; }
 
 /// <summary>
@@ -115,7 +115,7 @@ bool IsWall(int X, int Y);
 /// </summary>
 /// <param name="InPlayer">플레이어 참조</param>
 /// <returns>입력받은 방향</returns>
-MoveDirection GetMoveInput(Player& InPlayer);
+MoveDirection GetMoveInput(Deprecated_Player& InPlayer);
 
 /// <summary>
 /// 랜덤 인카운터(전투) 발생 여부 체크하는 함수
@@ -128,19 +128,19 @@ RandomIncounterType RandomIncounter();
 /// </summary>
 /// <param name="InPlayer">플레이어 참조</param>
 /// <returns>true면 플레이어의 승리, false면 패배</returns>
-bool Battle(Player& InPlayer);
+bool Battle(Deprecated_Player& InPlayer);
 
 /// <summary>
 /// 플레이어 체력회복 랜덤 인카운터 이벤트 처리 함수
 /// </summary>
 /// <param name="InPlayer">플레이어 참조</param>
-void Heal(Player& InPlayer);
+void Heal(Deprecated_Player& InPlayer);
 
 /// <summary>
 /// 플레이어 보물 발견 랜덤 인카운터 이벤트 처리함수
 /// </summary>
 /// <param name="InPlayer">플레이어 참조</param>
-void Treasure(Player& Player);
+void Treasure(Deprecated_Player& Player);
 
 // 자리수 분리해서 합치기(입력은 인티저로 제한)
 int GetSum(int Number);
