@@ -20,6 +20,7 @@
 #include "Practice0604.h"
 #include "MazeGame.h"
 #include "MonsterList.h"
+#include "Day0605.h"
 
 using namespace std;
 
@@ -29,18 +30,13 @@ int main()  // 코드의 시작점
 	Seed = 0;		// 테스트용으로 임시로 설정
 	srand(Seed);	// 시드값 초기화
 
-	//Weekend0523_Dungeon();
-	//Day0529();
+	//MazeGame Game;
+	//Game.GameStart();
 
-	//Homework0530_01_Run();
-	//Homework0530_02_Run();
-	//Day0602();
+	Day0605 day0605;
+	//day0605.Test();
+	day0605.EnumClass();
 
-	//Practice0604 Test0604;
-	//Test0604.Test();
-
-	MazeGame Game;
-	Game.GameStart();
 
 }
 

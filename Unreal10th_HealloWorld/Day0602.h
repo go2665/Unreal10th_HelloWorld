@@ -116,6 +116,29 @@ public:
 	inline void SetAge(int InAge) { Age = InAge; }
 };
 
+
+class IFlyable	// IFlyable이라는 인터페이스가 있는데
+{
+public:
+	virtual void Fly() = 0;	// 날기라는 함수를 가진다.
+	virtual ~IFlyable() = default;
+};
+
+class ICanSwim
+{
+public :
+	virtual void Swim() = 0;
+	virtual ~ICanSwim() = default;
+};
+
+class ICanBattle
+{
+public:
+	virtual void Attack(ICanBattle* InTarget) = 0;
+	virtual void Defence(int InDamage) = 0;
+
+	virtual int GetHealth() const = 0;
+};
 	
 // 간단 실습
 //	- 동물 클래스 만들어보기
@@ -125,8 +148,7 @@ public:
 //		- 잠을 잘 수 있다.(잠을 자면 나이가 증가하고 에너지가 완전 회복된다.)
 //		- 자신의 모든 정보를 출력할 수 있다.
 
-
-class Eagle : public Animal
+class Eagle : public Animal, public IFlyable
 {
 public:
 	Eagle()
@@ -137,14 +159,14 @@ public:
 	{   }
 	virtual ~Eagle() = default;			// 상속하거나 상속받았는데 소멸자를 만들었으면 무조건 virtual을 붙여라.
 
-	void Fly();
+	virtual void Fly() override;
 	virtual void MakeSound() override;	// 가상함수를 덮어쓰기 하겠다.
 
 private:
 	const float FlyEnergy = 20.0f;
 };
 
-class Tiger : public Animal
+class Tiger : public Animal, public ICanBattle
 {
 public:
 	Tiger()
@@ -159,9 +181,16 @@ public:
 
 	void Roar();
 	virtual void MakeSound() override;	// 가상함수를 덮어쓰기 하겠다.
+	
+
+	// ICanBattle을(를) 통해 상속됨
+	virtual void Attack(ICanBattle* InTarget) override;
+	virtual void Defence(int InDamage) override;
+	virtual int GetHealth() const override { return 100; }
+
 };
 
-class Whale : public Animal
+class Whale : public Animal, public ICanSwim
 {
 public:
 	Whale()
@@ -174,7 +203,7 @@ public:
 	}
 	virtual ~Whale() = default;
 
-	void Swim();
+	virtual void Swim() override;
 	virtual void MakeSound() override;	// 가상함수를 덮어쓰기 하겠다.
 };
 

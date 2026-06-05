@@ -41,6 +41,20 @@ void Tiger::MakeSound()
 	printf("호랑이 : 어흥하고 소리를 냅니다.\n");
 }
 
+void Tiger::Attack(ICanBattle* InTarget)
+{
+	// 호랑이가 InTarget에게 10의 데미지를 주는 공격을 하기
+	if (InTarget)
+	{
+		InTarget->Defence(10);
+	}
+}
+
+void Tiger::Defence(int InDamage)
+{
+	// 호랑이가 InDamage만큼 피해를 입었습니다.
+}
+
 void Eagle::MakeSound()
 {
 	printf("독수리 : 빼액하고 소리를 냅니다.\n");
