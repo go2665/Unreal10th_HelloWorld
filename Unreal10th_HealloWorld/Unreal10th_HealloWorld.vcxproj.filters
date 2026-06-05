@@ -22,6 +22,9 @@
     <Filter Include="Maze">
       <UniqueIdentifier>{57fa3316-9d0f-4a49-b994-19cea161dd37}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DataStructure">
+      <UniqueIdentifier>{2ba5fe94-e53b-4f2b-9179-408e90259580}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Unreal10th_HealloWorld.cpp">
@@ -91,6 +94,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Day0605.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedList.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -180,6 +186,9 @@
       <Filter>Maze</Filter>
     </ClInclude>
     <ClInclude Include="Day0605.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedList.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

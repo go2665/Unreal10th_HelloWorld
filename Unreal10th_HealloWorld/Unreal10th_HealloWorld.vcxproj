@@ -135,6 +135,7 @@
     <ClCompile Include="Day0605.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Goblin.cpp" />
+    <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="MazeGame.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Orc.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="Day0605.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Goblin.h" />
+    <ClInclude Include="LinkedList.h" />
     <ClInclude Include="MazeCommon.h" />
     <ClInclude Include="MazeGame.h" />
     <ClInclude Include="Monster.h" />
