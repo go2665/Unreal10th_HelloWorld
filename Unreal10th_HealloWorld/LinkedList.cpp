@@ -34,10 +34,16 @@ void LinkedList::Remove(int InData)
 
 void LinkedList::RemoveAt(int InPosition)
 {
+    // 위치 찾기
+    // 찾은 노드 앞 노드의 Next를 찾은 노드의 Next로 변경
+    // 찾은 노드 delete
+
+    // 맨 앞과 뒤일 때 처리. 위치가 없는 경우는 그냥 종료
 }
 
 ListNode* LinkedList::Search(int InData) const
 {
+    // InData와 같은 값을 가지는 노드 찾기
     return nullptr;
 }
 
@@ -48,4 +54,5 @@ void LinkedList::Clear()
 
 void LinkedList::PrintList() const
 {
+    // 리스트 Head부터 Tail까지 출력하는 함수
 }
