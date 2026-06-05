@@ -1,4 +1,7 @@
 #include "Day0605.h"
+//#include <cstdint>
+#include <stdint.h>
+#include <type_traits>
 
 void Day0605::Interface()
 {
@@ -44,6 +47,25 @@ void Day0605::EnumClass()
 	//}
 	// int로 변경하려면 명시적 캐스팅 필요
 	int ColorNumber = static_cast<int>(Color2::Green);	// (int)(Color2::Green)
+
+	enum class AnimalType : int8_t		// 사이즈를 지정할 수 있다.
+	{
+		Eagle,
+		Tiger,
+		Whale
+	};
+
+	int Size = sizeof(AnimalType::Eagle);
+	
+	using RealType = std::underlying_type_t<AnimalType>;	// AnimalType의 실제 타입 받아오기
+	
+
+	// 비트 플래그 사용하기	
+	Direction Dir = Direction::Up | Direction::Down;
+	Dir |= Direction::Left;
+	Dir &= Direction::Up;
+
+	int i = 0;
 }
 
 void Test0605_1::Fly()

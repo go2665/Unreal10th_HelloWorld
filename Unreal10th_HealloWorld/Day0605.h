@@ -18,6 +18,7 @@ public:
 	//	- 타입 안정성이 강화
 	//		- 기존의 enum은 int와 암시적 변환이 가능하다. -> 편리하지만 논리적 오류가 발생할 수 있다.
 	//	- 이름 겹침 문제를 줄일 수 있다.(enum class는 별도의 네임스페이스를 가지는 것과 유사하다.)
+	//	- 사이즈를 지정할 수 있다.(정수형 타입이면 모두 가능)
 
 	void EnumClass();
 
@@ -47,3 +48,39 @@ public:
 	int Data = 20;
 };
 
+enum class Direction : uint8_t
+{
+	Up = 1 << 0,
+	Down = 1 << 1,
+	Left = 1 << 2,
+	Right = 1 << 3
+};
+
+using DirectionType = std::underlying_type_t<Direction>;	
+
+inline Direction operator|(Direction InLeft, Direction InRight)
+{
+	// InLeft와 InRight를 uint8로 캐스팅해서, |비트연산을 하고, 다시 Direction타입으로 캐스팅.
+	return static_cast<Direction>(static_cast<DirectionType>(InLeft) | static_cast<DirectionType>(InRight));
+}
+inline Direction operator&(Direction InLeft, Direction InRight)
+{
+	return static_cast<Direction>(static_cast<DirectionType>(InLeft) & static_cast<DirectionType>(InRight));
+}
+inline Direction operator~(Direction InValue)
+{
+	return static_cast<Direction>(~static_cast<DirectionType>(InValue));
+}
+inline Direction& operator|=(Direction& InLeft, Direction InRight)
+{
+	InLeft = InLeft | InRight;	// 이미 정의해 놓은 연산 재활용하기
+	return InLeft;
+}
+inline Direction& operator&=(Direction& InLeft, Direction InRight)
+{
+	InLeft = InLeft & InRight;
+	return InLeft;
+}
+
+// |=
+// &=
