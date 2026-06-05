@@ -138,6 +138,7 @@ public:
 	virtual void Defence(int InDamage) = 0;
 
 	virtual int GetHealth() const = 0;
+	virtual ~ICanBattle() = default;
 };
 	
 // 간단 실습
