@@ -72,6 +72,8 @@ void Day0605::EnumClass()
 void Day0605::TestList()
 {
 	LinkedList* MyList = nullptr;
+	MyList = new LinkedList();
+
 	printf("--- 초기 리스트 생성 ---\n");
 	MyList->Add(10);
 	MyList->Add(20);
@@ -82,8 +84,10 @@ void Day0605::TestList()
 	printf("1-1. 위치가 Size보다 클 때 (마지막에 추가):\n");
 	MyList->InsertAt(40, 100);
 	MyList->PrintList();
-	printf("\n1-2. 정상적인 추가 (위치 0에 5 추가):\n");
+	printf("\n1-2. 정상적인 추가 (위치 0에 5 추가, 위치 2에 15 추가):\n");
 	MyList->InsertAt(5, 0);
+	MyList->PrintList();
+	MyList->InsertAt(15, 2);
 	MyList->PrintList();
 
 	printf("\n--- 2. Remove 테스트 ---\n");
@@ -96,16 +100,16 @@ void Day0605::TestList()
 
 	printf("\n--- 3. RemoveAt 테스트 ---\n");
 	printf("3-1. 위치가 Size와 같거나 클 때:\n");
-	MyList->RemoveAt(4); // 현재 크기는 4이므로, 인덱스 4는 범위를 벗어남
+	MyList->RemoveAt(5); // 현재 크기는 5이므로, 인덱스 5는 범위를 벗어남
 	MyList->RemoveAt(99);
 	MyList->PrintList();
-	printf("\n3-2. 정상적인 삭제 (위치 1의 30 삭제):\n");
+	printf("\n3-2. 정상적인 삭제 (위치 1의 10 삭제):\n");
 	MyList->RemoveAt(1);
 	MyList->PrintList();
 
 	printf("\n--- 4. Search 테스트 ---\n");
-	printf("4-1. 찾는 노드가 있는 경우 (10 탐색):\n");
-	int ValueToFind = 10;
+	printf("4-1. 찾는 노드가 있는 경우 (30 탐색):\n");
+	int ValueToFind = 30;
 	ListNode* FoundNode = MyList->Search(ValueToFind);
 	if (FoundNode != nullptr)
 	{
@@ -129,6 +133,7 @@ void Day0605::TestList()
 
 	printf("\n--- 프로그램 종료 (소멸자 호출) ---\n");
 	MyList->Clear();
+	MyList->PrintList();
 	delete MyList;
 	MyList = nullptr;
 }

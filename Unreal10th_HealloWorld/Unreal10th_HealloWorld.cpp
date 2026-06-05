@@ -35,9 +35,8 @@ int main()  // 코드의 시작점
 
 	Day0605 day0605;
 	//day0605.Test();
-	day0605.EnumClass();
-
-
+	//day0605.EnumClass();
+	day0605.TestList();
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
