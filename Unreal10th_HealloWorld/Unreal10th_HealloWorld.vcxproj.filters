@@ -96,8 +96,11 @@
     <ClCompile Include="Day0605.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="DArray.cpp">
+      <Filter>DataStructure</Filter>
+    </ClCompile>
     <ClCompile Include="LinkedList.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>DataStructure</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -188,8 +191,11 @@
     <ClInclude Include="Day0605.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="DArray.h">
+      <Filter>DataStructure</Filter>
+    </ClInclude>
     <ClInclude Include="LinkedList.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>DataStructure</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

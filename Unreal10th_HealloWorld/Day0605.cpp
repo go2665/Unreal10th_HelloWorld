@@ -1,8 +1,10 @@
 #include "Day0605.h"
+#include "LinkedList.h"
 //#include <cstdint>
 #include <stdint.h>
 #include <type_traits>
-#include "LinkedList.h"
+#include <list>
+#include <vector>
 
 void Day0605::Interface()
 {
@@ -136,6 +138,51 @@ void Day0605::TestList()
 	MyList->PrintList();
 	delete MyList;
 	MyList = nullptr;
+}
+
+void Day0605::Test_STL_List()
+{
+	std::list<int> IntList;
+	std::list<float> FloatList;
+
+	IntList.push_back(10);
+	IntList.push_back(20);
+	IntList.push_front(30);
+
+	std::list<int>::iterator Iter = IntList.begin();	// 시작위치
+	auto Iter2 = IntList.begin();	
+	int Data = (*Iter);
+
+	IntList.insert(++IntList.begin(), 100);
+	IntList.remove(100);
+	//IntList.erase()	우리가 만든 RemoveAt과 유사
+
+	// 일반적인 STL 데이터 컨테이너 순회법
+	for (auto iter = IntList.begin(); iter != IntList.end(); iter++)
+	{
+		printf("%d ", *iter);
+	}
+	printf("\n");
+
+	int i = 0;
+}
+
+void Day0605::Test_STL_Vector()
+{
+	// vector
+	//	- 동적 배열
+	//	- 기본적인 배열과 유사한데 배열에 마지막에 추가/삭제는 Capacity의 여유가 있을 경우 매우 빠르다.
+	//	- size(현재 사용하는 크기)와 capacity(메모리 할당된 크기)의 개념 파악이 중요
+	std::vector<int> Array;
+	Array.reserve(100);		// 최적화를 위해서 필수
+	Array.push_back(10);
+	Array.push_back(20);
+	Array.push_back(30);
+	Array.pop_back();
+	Array.push_back(40);
+	Array.push_back(50);
+
+	printf("%d", Array[1]);
 }
 
 void Test0605_1::Fly()

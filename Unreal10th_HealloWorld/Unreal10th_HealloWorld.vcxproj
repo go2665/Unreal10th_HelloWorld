@@ -125,6 +125,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="DArray.cpp" />
     <ClCompile Include="Day0521_2.cpp" />
     <ClCompile Include="Day0522.cpp" />
     <ClCompile Include="Day0526.cpp" />
@@ -151,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
+    <ClInclude Include="DArray.h" />
     <ClInclude Include="Day0519.h" />
     <ClInclude Include="Day0515.h" />
     <ClInclude Include="Day0518.h" />

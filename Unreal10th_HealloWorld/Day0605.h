@@ -47,6 +47,8 @@ public:
 	//	- 단점 : 탐색속도가 느리다. 추가 메모리가 필요하다.
 	//			랜덤 액세스가 많을 경우(중간에 확인하는 것), 데이터 개수가 고정인 경우 불리함.
 	void TestList();
+	void Test_STL_List();
+	void Test_STL_Vector();
 
 };
 
