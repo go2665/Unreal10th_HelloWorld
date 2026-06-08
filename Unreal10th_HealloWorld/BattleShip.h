@@ -1,4 +1,5 @@
 #pragma once
+#include "ShipManager.h"
 
 // 게임 진행
 //	- 턴 처리
@@ -37,23 +38,24 @@ private:
 	class HiddenMap* MapHidden = nullptr;
 	// 플레이어가 공격한 결과를 저장해 놓은 맵
 	class PlayerMap* MapPlayer = nullptr;
-
 	// 적함선 관리
+	ShipManager* EnemyFleet = nullptr;
 
 	// 지정된 좌표에 공격
 	bool Shoot(int InX, int InY);
 
-	// 게임 오버 확인
-	bool IsGameOver() const;
 
 	// 입력처리
 	void InputHandle();
 
 	// 게임 상태 출력
-	void PrintGameStatus() const;
+	void PrintGameState() const;
 
 	// 게임 결과 출력
 	void PrintGameResult() const;
+
+	// 게임 오버 확인
+	inline bool IsGameOver() const { return TurnLeft <= 0 || (EnemyFleet && EnemyFleet->IsAllSunk()); }
 
 	// 테스트 모드 여부(true면 적함선 위치 찍어서 보여주기)
 	bool IsTestMode = true;

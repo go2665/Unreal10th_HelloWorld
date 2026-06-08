@@ -43,6 +43,11 @@ int main()  // 코드의 시작점
 	//BattleShip::Test = 10;
 	//Map::IsValidPosition(10, 20);
 
+	BattleShip BattleShipGame;
+	BattleShipGame.Initialize();
+	BattleShipGame.Play();
+	BattleShipGame.Clear();
+
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
