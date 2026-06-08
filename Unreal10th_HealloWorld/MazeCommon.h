@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Position.h"
 
 //DEPRECATED
 const int Deprecated_InvalidPosition = -1;
@@ -31,23 +31,3 @@ enum RandomIncounterType
 	RI_Treasure		// 보물 찾음(돈)
 };
 
-struct Position
-{
-	int X = 0;
-	int Y = 0;
-
-	Position() = default;
-	Position(int InX, int InY)
-		: X(InX), Y(InY)
-	{
-	}
-
-	Position operator+(const Position& InOther) const
-	{
-		return Position(X + InOther.X, Y + InOther.Y);
-	}
-	Position operator-(const Position& InOther) const
-	{
-		return Position(X - InOther.X, Y - InOther.Y);
-	}
-};

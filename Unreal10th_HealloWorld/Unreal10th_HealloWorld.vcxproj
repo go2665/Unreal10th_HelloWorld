@@ -125,6 +125,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="BattleShip.cpp" />
     <ClCompile Include="DArray.cpp" />
     <ClCompile Include="Day0521_2.cpp" />
     <ClCompile Include="Day0522.cpp" />
@@ -136,14 +137,19 @@
     <ClCompile Include="Day0605.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Goblin.cpp" />
+    <ClCompile Include="HiddenMap.cpp" />
     <ClCompile Include="LinkedList.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="MazeGame.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Orc.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerMap.cpp" />
     <ClCompile Include="Practice0521_1.cpp" />
     <ClCompile Include="Practice0521_2.cpp" />
     <ClCompile Include="Practice0604.cpp" />
+    <ClCompile Include="Ship.cpp" />
+    <ClCompile Include="ShipManager.cpp" />
     <ClCompile Include="Slime.cpp" />
     <ClCompile Include="Unreal10th_HealloWorld.cpp" />
     <ClCompile Include="Utils.cpp" />
@@ -152,6 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
+    <ClInclude Include="BattleShip.h" />
     <ClInclude Include="DArray.h" />
     <ClInclude Include="Day0519.h" />
     <ClInclude Include="Day0515.h" />
@@ -168,16 +175,22 @@
     <ClInclude Include="Day0605.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Goblin.h" />
+    <ClInclude Include="HiddenMap.h" />
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="MazeCommon.h" />
     <ClInclude Include="MazeGame.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MonsterList.h" />
     <ClInclude Include="Orc.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerMap.h" />
+    <ClInclude Include="Position.h" />
     <ClInclude Include="Practice0521_1.h" />
     <ClInclude Include="Practice0521_2.h" />
     <ClInclude Include="Practice0604.h" />
+    <ClInclude Include="Ship.h" />
+    <ClInclude Include="ShipManager.h" />
     <ClInclude Include="Slime.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Weekend0523.h" />

@@ -25,6 +25,9 @@
     <Filter Include="DataStructure">
       <UniqueIdentifier>{2ba5fe94-e53b-4f2b-9179-408e90259580}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BattleShip">
+      <UniqueIdentifier>{c9e7db7f-a63e-41e1-bc27-a6b87ad54079}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Unreal10th_HealloWorld.cpp">
@@ -101,6 +104,24 @@
     </ClCompile>
     <ClCompile Include="LinkedList.cpp">
       <Filter>DataStructure</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleShip.cpp">
+      <Filter>BattleShip</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>BattleShip</Filter>
+    </ClCompile>
+    <ClCompile Include="HiddenMap.cpp">
+      <Filter>BattleShip</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerMap.cpp">
+      <Filter>BattleShip</Filter>
+    </ClCompile>
+    <ClCompile Include="Ship.cpp">
+      <Filter>BattleShip</Filter>
+    </ClCompile>
+    <ClCompile Include="ShipManager.cpp">
+      <Filter>BattleShip</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +217,27 @@
     </ClInclude>
     <ClInclude Include="LinkedList.h">
       <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleShip.h">
+      <Filter>BattleShip</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>BattleShip</Filter>
+    </ClInclude>
+    <ClInclude Include="Position.h">
+      <Filter>Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="HiddenMap.h">
+      <Filter>BattleShip</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerMap.h">
+      <Filter>BattleShip</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship.h">
+      <Filter>BattleShip</Filter>
+    </ClInclude>
+    <ClInclude Include="ShipManager.h">
+      <Filter>BattleShip</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

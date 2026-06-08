@@ -21,6 +21,7 @@
 #include "MazeGame.h"
 #include "MonsterList.h"
 #include "Day0605.h"
+#include "BattleShip.h"
 
 using namespace std;
 
@@ -33,12 +34,15 @@ int main()  // 코드의 시작점
 	//MazeGame Game;
 	//Game.GameStart();
 
-	Day0605 day0605;
+	//Day0605 day0605;
 	//day0605.Test();
 	//day0605.EnumClass();
 	//day0605.TestList();
 	//day0605.Test_STL_List();
-	day0605.Test_STL_Vector();
+	//day0605.Test_STL_Vector();
+	//BattleShip::Test = 10;
+	//Map::IsValidPosition(10, 20);
+
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
