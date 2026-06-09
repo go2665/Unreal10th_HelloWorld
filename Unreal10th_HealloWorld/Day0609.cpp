@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stack>
+#include <queue>
 #include <string>
 #include "Day0609.h"
 #include "FixedStack.h"
@@ -11,7 +12,8 @@ void Day0609::Day0609_Main()
     //Reverse();
     //ReverseSTL();
     //Day0609_Queue();
-    TestQueue();
+    //TestQueue();
+    TestQueueSTL();
 }
 
 void Day0609::Day0609_Stack()
@@ -220,4 +222,20 @@ void Day0609::TestQueue()
             break;
         }
     }
+}
+
+void Day0609::TestQueueSTL()
+{
+    std::queue<float> TestQueue;
+    TestQueue.push(1.1f);
+    TestQueue.push(2.1f);
+    TestQueue.push(3.1f);
+
+    printf("STL Queue : [ ");
+    while (!TestQueue.empty())
+    {
+        printf("%.1f ", TestQueue.front());
+        TestQueue.pop();
+    }
+    printf("]\n");
 }

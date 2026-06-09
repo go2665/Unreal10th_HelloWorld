@@ -11,6 +11,7 @@ private:
 	void Reverse();
 	void ReverseSTL();
 	void TestQueue();
+	void TestQueueSTL();
 };
 
 // 큐(Queue)

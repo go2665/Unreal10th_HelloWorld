@@ -57,4 +57,14 @@ void CircularQueue::Print() const
 
     // 간단 실습
     // - Print 구현하기
+
+    printf("현재 큐의 상태 : [ ");
+    int Index = Front;
+    printf("%d ", Data[Index]);
+    while (Index != Rear)
+    {
+        Index = (Index + 1) % MaxSize;
+        printf("%d ", Data[Index]);
+    }
+    printf("]\n");
 }
