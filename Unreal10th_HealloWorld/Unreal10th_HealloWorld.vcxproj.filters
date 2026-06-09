@@ -130,7 +130,7 @@
       <Filter>DataStructure</Filter>
     </ClCompile>
     <ClCompile Include="CircularQueue.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>DataStructure</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -255,7 +255,7 @@
       <Filter>DataStructure</Filter>
     </ClInclude>
     <ClInclude Include="CircularQueue.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>DataStructure</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
