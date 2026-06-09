@@ -135,7 +135,9 @@
     <ClCompile Include="Day0529.cpp" />
     <ClCompile Include="Day0602.cpp" />
     <ClCompile Include="Day0605.cpp" />
+    <ClCompile Include="Day0609.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="FixedStack.cpp" />
     <ClCompile Include="Goblin.cpp" />
     <ClCompile Include="HiddenMap.cpp" />
     <ClCompile Include="LinkedList.cpp" />
@@ -173,7 +175,9 @@
     <ClInclude Include="Day0529.h" />
     <ClInclude Include="Day0602.h" />
     <ClInclude Include="Day0605.h" />
+    <ClInclude Include="Day0609.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="FixedStack.h" />
     <ClInclude Include="Goblin.h" />
     <ClInclude Include="HiddenMap.h" />
     <ClInclude Include="LinkedList.h" />

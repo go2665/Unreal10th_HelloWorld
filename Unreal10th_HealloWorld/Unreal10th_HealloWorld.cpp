@@ -22,6 +22,7 @@
 #include "MonsterList.h"
 #include "Day0605.h"
 #include "BattleShip.h"
+#include "Day0609.h"
 
 using namespace std;
 
@@ -43,10 +44,13 @@ int main()  // 코드의 시작점
 	//BattleShip::Test = 10;
 	//Map::IsValidPosition(10, 20);
 
-	BattleShip BattleShipGame;
-	BattleShipGame.Initialize();
-	BattleShipGame.Play();
-	BattleShipGame.Clear();
+	//BattleShip BattleShipGame;
+	//BattleShipGame.Initialize();
+	//BattleShipGame.Play();
+	//BattleShipGame.Clear();
+
+	Day0609 day0609;
+	day0609.Day0609_Main();
 
 }
 

@@ -123,6 +123,12 @@
     <ClCompile Include="ShipManager.cpp">
       <Filter>BattleShip</Filter>
     </ClCompile>
+    <ClCompile Include="FixedStack.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Day0609.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Day0515.h">
@@ -238,6 +244,12 @@
     </ClInclude>
     <ClInclude Include="ShipManager.h">
       <Filter>BattleShip</Filter>
+    </ClInclude>
+    <ClInclude Include="FixedStack.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Day0609.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
