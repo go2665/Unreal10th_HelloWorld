@@ -13,7 +13,9 @@ void Day0609::Day0609_Main()
     //ReverseSTL();
     //Day0609_Queue();
     //TestQueue();
-    TestQueueSTL();
+    //TestQueueSTL();
+    //TestQueue2();
+    SwallowCopy();
 }
 
 void Day0609::Day0609_Stack()
@@ -224,6 +226,59 @@ void Day0609::TestQueue()
     }
 }
 
+void Day0609::TestQueue2()
+{
+    // 크기가 10으로 고정된 큐 객체를 생성합니다.
+    int Size = 3;
+    CircularQueue2 Queue(Size);
+    printf("크기가 %u인 큐가 생성되었습니다.\n", Size);
+
+    int Choice, Value;
+
+    while (true)
+    {
+        printf("\n--- 메뉴 ---\n");
+        printf("1. 인큐 (Enqueue)\n");
+        printf("2. 디큐 (Dequeue)\n");
+        printf("3. 피크 (Peek)\n");
+        printf("4. 출력 (Print)\n");
+        printf("5. 종료\n");
+        printf("선택: ");
+
+        std::cin >> Choice;
+
+        switch (Choice)
+        {
+        case 1:
+            printf("큐에 추가할 정수를 입력하세요: ");
+            std::cin >> Value;
+            Queue.Enqueue(Value);
+            break;
+        case 2:
+            Queue.Dequeue();
+            break;
+        case 3:
+        {
+            int FrontValue = Queue.Peek();
+            if (FrontValue != CircularQueue::Empty)
+            {
+                printf("큐의 맨 앞 데이터: %d\n", FrontValue);
+            }
+        }
+        break;
+        case 4:
+            Queue.Print();
+            break;
+        case 5:
+            printf("프로그램을 종료합니다.\n");
+            return;
+        default:
+            printf("잘못된 선택입니다. 다시 시도하세요.\n");
+            break;
+        }
+    }
+}
+
 void Day0609::TestQueueSTL()
 {
     std::queue<float> TestQueue;
@@ -238,4 +293,23 @@ void Day0609::TestQueueSTL()
         TestQueue.pop();
     }
     printf("]\n");
+}
+
+void Day0609::SwallowCopy()
+{
+    //CircularQueue2 Test1(3);
+    //Test1.Enqueue(10);
+    //Test1.Enqueue(20);  // front = 0, rear = 1, data = {10, 20}
+    //CircularQueue2 Test2 = Test1;
+
+    CircularQueue2* Test1 = new CircularQueue2(3);
+    Test1->Enqueue(10);
+    Test1->Enqueue(20);  // front = 0, rear = 1, data = {10, 20}
+    CircularQueue2 Test2;
+    Test2 = (*Test1);
+
+    delete Test1;
+    Test1 = 0;
+
+    int i = 0;
 }

@@ -11,7 +11,9 @@ private:
 	void Reverse();
 	void ReverseSTL();
 	void TestQueue();
+	void TestQueue2();
 	void TestQueueSTL();
+	void SwallowCopy();
 };
 
 // 큐(Queue)
@@ -25,3 +27,9 @@ private:
 // 단점
 //	- 중간에 있는 데이터에는 접근하거나 탐색할 수 없음
 //	- 활용도가 제한적
+
+// 깊은 복사와 얕은 복사
+// 깊은 복사(Deep Copy)
+//	- 데이터의 완전한 사본을 만드는 복사
+// 얕은 복사(Swallow Copy)
+//	- 복사를 할 때 포인터의 경우 사본을 만들지 않고 주소만 복사하는 것
