@@ -1,3 +1,4 @@
+#include "CircularQueue.h"
 #pragma once
 
 class FixedStack {

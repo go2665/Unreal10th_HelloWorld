@@ -126,6 +126,7 @@
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="BattleShip.cpp" />
+    <ClCompile Include="CircularQueue.cpp" />
     <ClCompile Include="DArray.cpp" />
     <ClCompile Include="Day0521_2.cpp" />
     <ClCompile Include="Day0522.cpp" />
@@ -161,6 +162,7 @@
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="BattleShip.h" />
+    <ClInclude Include="CircularQueue.h" />
     <ClInclude Include="DArray.h" />
     <ClInclude Include="Day0519.h" />
     <ClInclude Include="Day0515.h" />

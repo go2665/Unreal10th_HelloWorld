@@ -9,7 +9,8 @@ void Day0609::Day0609_Main()
 	//Day0609_Stack();
     //TestStack();
     //Reverse();
-    ReverseSTL();
+    //ReverseSTL();
+    Day0609_Queue();
 }
 
 void Day0609::Day0609_Stack()
@@ -39,6 +40,11 @@ void Day0609::Day0609_Stack()
 	// 간단 실습
 	// 1. FixedStack 구현하기
     // 2. 문자열 입력 받고 거꾸로 출력하기(FixedStack과 std::stack 둘다 해보기)
+}
+
+void Day0609::Day0609_Queue()
+{
+
 }
 
 void Day0609::TestStack()
