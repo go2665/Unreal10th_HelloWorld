@@ -10,6 +10,7 @@ private:
 	void TestStack();
 	void Reverse();
 	void ReverseSTL();
+	void TestQueue();
 };
 
 // 큐(Queue)

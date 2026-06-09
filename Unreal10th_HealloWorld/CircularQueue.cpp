@@ -21,7 +21,7 @@ int CircularQueue::Dequeue()
     if (IsEmpty())
     {
         printf("ERROR : 큐가 비어있습니다!\n");
-        return;
+        return Empty;
     }
 
     int Value = Data[Front];
@@ -55,4 +55,6 @@ void CircularQueue::Print() const
         return;
     }
 
+    // 간단 실습
+    // - Print 구현하기
 }

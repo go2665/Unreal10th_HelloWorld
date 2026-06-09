@@ -9,9 +9,10 @@ public:
 	int Peek() const;
 	void Print() const;
 	
-private:
 	static constexpr int MaxSize = 10;
 	static constexpr int Empty = -1;
+
+private:
 
 	int Data[MaxSize];
 	int Front = Empty;
