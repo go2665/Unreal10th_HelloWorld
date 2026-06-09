@@ -12,13 +12,13 @@ public:
     int Top();
 
     // 스택이 꽉 찼는지 확인합니다.
-    bool IsFull() const;
+    inline bool IsFull() const { return TopIndex == (StackCapacity - 1); }
 
     // 스택이 비었는지 확인합니다.
-    bool IsEmpty() const;
+    inline bool IsEmpty() const { return TopIndex == Empty; }
 
     // 스택의 현재 크기를 반환합니다.
-    int GetSize() const;
+    inline int GetSize() const { return TopIndex + 1; }
 
 private:
     // 스택의 최대 용량

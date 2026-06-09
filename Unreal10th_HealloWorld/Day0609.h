@@ -7,5 +7,7 @@ public:
 
 private:
 	void TestStack();
+	void Reverse();
+	void ReverseSTL();
 };
 

@@ -1,10 +1,15 @@
+#include <iostream>
 #include <stack>
+#include <string>
 #include "Day0609.h"
 #include "FixedStack.h"
 
 void Day0609::Day0609_Main()
 {
-	Day0609_Stack();
+	//Day0609_Stack();
+    //TestStack();
+    //Reverse();
+    ReverseSTL();
 }
 
 void Day0609::Day0609_Stack()
@@ -33,7 +38,7 @@ void Day0609::Day0609_Stack()
 
 	// 간단 실습
 	// 1. FixedStack 구현하기
-    // 2. 문자열 입력 받고 거꾸로 출력하기
+    // 2. 문자열 입력 받고 거꾸로 출력하기(FixedStack과 std::stack 둘다 해보기)
 }
 
 void Day0609::TestStack()
@@ -106,4 +111,54 @@ void Day0609::TestStack()
     printf("\n");
 
     printf("--- FixedStack 테스트 종료 ---\n");
+}
+
+void Day0609::Reverse()
+{
+    std::string Input;
+    printf("영어 단어를 입력하세요(최대 10자) : ");
+    std::cin >> Input;
+
+    FixedStack MyStack;
+    for (char c : Input)
+    {
+        MyStack.Push(static_cast<int>(c));
+    }
+    //for (int i = 0; i < Input.size(); i++)
+    //{
+    //    char c = Input[i];
+    //}
+    printf("입력된 단어 : %s\n", Input.c_str());
+
+    std::string ReveseString;
+    while (!MyStack.IsEmpty())
+    {
+        char Temp[2] = { static_cast<char>(MyStack.Pop()), '\0' };
+        ReveseString.append(Temp);
+    }
+    printf("뒤집힌 단어 : %s\n", ReveseString.c_str());
+    
+}
+
+void Day0609::ReverseSTL()
+{
+    std::string Input;
+    printf("영어 단어를 입력하세요 : ");
+    std::cin >> Input;
+
+    std::stack<char> StackSTL;
+    for (char c : Input)
+    {
+        StackSTL.push(c);
+    }
+    printf("입력된 단어 : %s\n", Input.c_str());
+
+    std::string ReveseString;
+    while (!StackSTL.empty())
+    {
+        char Temp[2] = { StackSTL.top(), '\0'};
+        ReveseString.append(Temp);
+        StackSTL.pop();
+    }
+    printf("뒤집힌 단어 : %s\n", ReveseString.c_str());
 }
