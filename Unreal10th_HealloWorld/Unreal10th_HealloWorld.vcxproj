@@ -102,7 +102,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>Default</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -137,6 +137,7 @@
     <ClCompile Include="Day0602.cpp" />
     <ClCompile Include="Day0605.cpp" />
     <ClCompile Include="Day0609.cpp" />
+    <ClCompile Include="Day0610.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="FixedStack.cpp" />
     <ClCompile Include="Goblin.cpp" />
@@ -162,7 +163,9 @@
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="BattleShip.h" />
+    <ClInclude Include="BitFlag.h" />
     <ClInclude Include="CircularQueue.h" />
+    <ClInclude Include="Coordinate.h" />
     <ClInclude Include="DArray.h" />
     <ClInclude Include="Day0519.h" />
     <ClInclude Include="Day0515.h" />
@@ -178,6 +181,7 @@
     <ClInclude Include="Day0602.h" />
     <ClInclude Include="Day0605.h" />
     <ClInclude Include="Day0609.h" />
+    <ClInclude Include="Day0610.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FixedStack.h" />
     <ClInclude Include="Goblin.h" />

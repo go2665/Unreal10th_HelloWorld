@@ -132,6 +132,9 @@
     <ClCompile Include="CircularQueue.cpp">
       <Filter>DataStructure</Filter>
     </ClCompile>
+    <ClCompile Include="Day0610.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Day0515.h">
@@ -256,6 +259,15 @@
     </ClInclude>
     <ClInclude Include="CircularQueue.h">
       <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Coordinate.h">
+      <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="BitFlag.h">
+      <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Day0610.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

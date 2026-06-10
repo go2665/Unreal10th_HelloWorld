@@ -306,7 +306,7 @@ void Day0609::SwallowCopy()
     Test1->Enqueue(10);
     Test1->Enqueue(20);  // front = 0, rear = 1, data = {10, 20}
     CircularQueue2 Test2;
-    Test2 = (*Test1);
+    //Test2 = (*Test1);
 
     delete Test1;
     Test1 = 0;
