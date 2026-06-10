@@ -13,5 +13,11 @@ void Day0610::TestTemplateClass()
 	TestEnumClass Test3 = Test1 | Test2;
 	//TestEnumClass Test4 = Test1 & Test2;
 
+	Calculator Calc;
+
+	auto Sum = Calc.Add(10, 2.5);
+
+	auto Div = Calc.Divide(5, 0);
 	int i = 0;
 }
+
