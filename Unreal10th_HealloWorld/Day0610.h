@@ -7,6 +7,7 @@ public:
 	void TestMain();
 
 	void TestTemplateClass();
+    void TestTree();
 };
 
 // 간단실습

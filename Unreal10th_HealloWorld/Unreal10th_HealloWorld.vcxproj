@@ -126,6 +126,7 @@
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="BattleShip.cpp" />
+    <ClCompile Include="BST.cpp" />
     <ClCompile Include="CircularQueue.cpp" />
     <ClCompile Include="DArray.cpp" />
     <ClCompile Include="Day0521_2.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="Actor.h" />
     <ClInclude Include="BattleShip.h" />
     <ClInclude Include="BitFlag.h" />
+    <ClInclude Include="BST.h" />
     <ClInclude Include="CircularQueue.h" />
     <ClInclude Include="Coordinate.h" />
     <ClInclude Include="DArray.h" />
