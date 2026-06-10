@@ -1,7 +1,8 @@
 #pragma once
 #pragma once
 
-struct TreeNode {
+struct TreeNode 
+{
     int Key = 0;
     TreeNode* Left = nullptr;
     TreeNode* Right = nullptr;
@@ -9,7 +10,8 @@ struct TreeNode {
     TreeNode(int key) : Key(key) {}
 };
 
-class BinarySearchTree {
+class BinarySearchTree 
+{
 public:
     // 생성자
     BinarySearchTree() = default;
