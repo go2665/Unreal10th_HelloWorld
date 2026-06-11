@@ -138,6 +138,9 @@
     <ClCompile Include="BST.cpp">
       <Filter>DataStructure</Filter>
     </ClCompile>
+    <ClCompile Include="Day0611.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Day0515.h">
@@ -273,6 +276,15 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="BST.h">
+      <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="TLinkedList.h">
+      <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Day0611.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TFixedStack.h">
       <Filter>DataStructure</Filter>
     </ClInclude>
   </ItemGroup>

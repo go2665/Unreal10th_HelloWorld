@@ -139,6 +139,7 @@
     <ClCompile Include="Day0605.cpp" />
     <ClCompile Include="Day0609.cpp" />
     <ClCompile Include="Day0610.cpp" />
+    <ClCompile Include="Day0611.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="FixedStack.cpp" />
     <ClCompile Include="Goblin.cpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="Day0605.h" />
     <ClInclude Include="Day0609.h" />
     <ClInclude Include="Day0610.h" />
+    <ClInclude Include="Day0611.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FixedStack.h" />
     <ClInclude Include="Goblin.h" />
@@ -204,6 +206,8 @@
     <ClInclude Include="Ship.h" />
     <ClInclude Include="ShipManager.h" />
     <ClInclude Include="Slime.h" />
+    <ClInclude Include="TFixedStack.h" />
+    <ClInclude Include="TLinkedList.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Weekend0523.h" />
     <ClInclude Include="Weenend0530.h" />

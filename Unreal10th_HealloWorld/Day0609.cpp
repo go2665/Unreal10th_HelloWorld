@@ -4,6 +4,7 @@
 #include <string>
 #include "Day0609.h"
 #include "FixedStack.h"
+#include "CircularQueue.h"
 
 void Day0609::Day0609_Main()
 {
