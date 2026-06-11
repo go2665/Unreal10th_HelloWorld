@@ -1,12 +1,22 @@
 #include "Day0611.h"
 #include "TLinkedList.h"
 #include "TFixedStack.h"
+#include <vector>
+#include <algorithm>
+#include <functional>
+
+bool DescGlobal(int a, int b) 
+{ 
+	return a > b; 
+};
 
 void Day0611::Day0611_Main()
 {
 	//TestTLinkedList();
 	//TestTLinkedList2();
-	TestTStack();
+	//TestTStack();
+	//TestSTL_Algorithm();
+	TestLambda();
 }
 
 void Day0611::TestTLinkedList()
@@ -185,4 +195,81 @@ void Day0611::TestTStack()
 	TestStack2.Pop();
 	TestStack2.Pop();
 	TestStack2.Pop();
+}
+
+void Day0611::TestSTL_Algorithm()
+{
+	std::vector<int> Datas = { 10, 35, 55, 22, 47 };
+	PrintVector(Datas);
+
+	// 데이터 찾기
+	std::vector<int>::iterator findIter = std::find(Datas.begin(), Datas.end(), 55);
+	if (findIter != Datas.end())
+	{
+		printf("%d를 찾았다.\n", (*findIter));
+	}
+	else
+	{
+		printf("찾는 수가 없다.\n");	// end는 (*findIter)이렇게 접근 할 수 없음
+	}
+	findIter = std::find(Datas.begin(), Datas.end(), 100);
+	if (findIter != Datas.end())
+	{
+		printf("%d를 찾았다.\n", (*findIter));
+	}
+	else
+	{
+		printf("찾는 수가 없다.\n");	
+	}
+
+	// 정렬하기
+	std::sort(Datas.begin(), Datas.end());
+	PrintVector(Datas);
+
+	// 이진 탐색으로 찾기
+	if (std::binary_search(Datas.begin(), Datas.end(), 55))
+	{
+		printf("%d를 찾았다.\n", 55);
+	}
+	else
+	{
+		printf("찾는 수가 없다.\n");	// end는 (*findIter)이렇게 접근 할 수 없음
+	}
+}
+
+void Day0611::PrintVector(const std::vector<int>& InData)
+{
+	printf("Data : ");
+	for (int e : InData)
+	{
+		printf("%d ", e);
+	}
+	printf("\n");
+}
+
+void Day0611::TestLambda()
+{
+	std::vector<int> Datas = { 10, 35, 55, 22, 47 };
+	PrintVector(Datas);
+	std::sort(Datas.begin(), Datas.end());
+	PrintVector(Datas);
+	// 맴버 함수 사용
+	//std::sort(Datas.begin(), Datas.end(), 
+	//	std::bind(&Day0611::Desc, this, std::placeholders::_1, std::placeholders::_2));
+	//std::sort(Datas.begin(), Datas.end(), [this](int a, int b) { return this->Desc(a, b); });
+
+	// 전역 함수 사용
+	//std::sort(Datas.begin(), Datas.end(), DescGlobal);
+	
+	// 람다 사용
+	//std::sort(Datas.begin(), Datas.end(), [](int a, int b) {return a > b; });
+	PrintVector(Datas);
+
+	int Line = 30;
+	std::sort(Datas.begin(), Datas.end());
+	auto iter = std::find_if(Datas.begin(), Datas.end(),
+		[Line](int n) {
+			return n > Line;
+		});
+	printf("%d보다 큰 첫번째 숫자는 %d입니다.\n", Line, *iter);
 }
