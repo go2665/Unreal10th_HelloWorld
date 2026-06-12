@@ -4,6 +4,10 @@
 #include <vector>
 #include <algorithm>
 #include <functional>
+#include <string>
+#include <sstream>
+#include <set>
+#include <map>
 
 bool DescGlobal(int a, int b) 
 { 
@@ -16,7 +20,11 @@ void Day0611::Day0611_Main()
 	//TestTLinkedList2();
 	//TestTStack();
 	//TestSTL_Algorithm();
-	TestLambda();
+	//TestLambda();
+	Practice1();
+	Practice2();
+	Practice3();
+	Practice4();
 }
 
 void Day0611::TestTLinkedList()
@@ -272,4 +280,106 @@ void Day0611::TestLambda()
 			return n > Line;
 		});
 	printf("%d보다 큰 첫번째 숫자는 %d입니다.\n", Line, *iter);
+}
+
+void Day0611::Practice1()
+{
+	printf("--- 1. 최대/최소 구하기 ---\n");
+	std::vector<int> Numbers = InputNumbers();
+
+	if (!Numbers.empty()) 
+	{
+		// 아래 []는 구조화된 바인딩
+		auto [IterMin, IterMax] = std::minmax_element(Numbers.begin(), Numbers.end());
+
+		//std::pair<std::vector<int>::iterator, std::vector<int>::iterator> Iter = std::minmax_element(Numbers.begin(), Numbers.end());
+		//auto Iter = std::minmax_element(Numbers.begin(), Numbers.end());	// 위와 같음
+		//auto IterMin = Iter.first;
+		//auto IterMax = Iter.second;
+
+		printf("최소값 : %d\n", *IterMin);
+		printf("최대값 : %d\n\n", *IterMax);		
+	}
+	else
+	{
+		printf("입력된 숫자가 없습니다.\n\n");
+	}
+}
+
+void Day0611::Practice2()
+{
+	printf("--- 2. 중복 없는 정수 출력 ---\n");
+	std::vector<int> Numbers = InputNumbers();
+	std::set<int> UniqueNumbers(Numbers.begin(), Numbers.end());	// std::vector로 set::set만들기
+
+	printf("중복 제거된 결과: ");
+	for (int Num : UniqueNumbers) 
+	{
+		printf("%d ", Num);
+	}
+	printf("\n\n");
+}
+
+void Day0611::Practice3()
+{
+	printf("--- 3. 문자열 중복 글자 제거 ---\n");
+	printf("문자열을 입력하세요: ");
+	std::string Input;
+	std::getline(std::cin, Input);
+		
+	std::set<char> Seen;
+	std::string Result = "";
+
+	for (char ch : Input) 
+	{
+		if (Seen.insert(ch).second) // insert의 두번째 리턴은 성공여부
+		{
+			Result += ch;
+		}
+	}
+
+	printf("중복 제거된 문자열: %s\n\n", Result.c_str());
+}
+
+void Day0611::Practice4()
+{
+	printf("--- 4. 단어 등장 횟수 측정 ---\n");
+	printf("문장을 입력하세요: ");
+	std::string Sentence;
+	std::getline(std::cin, Sentence);
+
+	std::stringstream ss(Sentence);
+	std::string Word;
+
+	// Key는 단어(string), Value는 빈도수(int)
+	std::map<std::string, int> WordCounts;
+
+	while (ss >> Word) 
+	{
+		WordCounts[Word]++;
+	}
+
+	printf("[단어 빈도수 결과]\n");
+	for (const auto& [Key, Value] : WordCounts) 
+	{
+		printf("%s : %d회\n", Key.c_str(), Value);
+	}
+	printf("\n");
+}
+
+std::vector<int> Day0611::InputNumbers()
+{
+	printf("정수들을 공백으로 구분하여 입력하고 Enter를 누르세요:\n");
+	std::string Input;
+	std::getline(std::cin, Input);
+
+	std::stringstream ss(Input);
+	std::vector<int> Numbers;
+	int Num;
+
+	while (ss >> Num) 
+	{
+		Numbers.push_back(Num);
+	}
+	return Numbers;
 }

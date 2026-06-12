@@ -15,6 +15,12 @@ public:
 	void TestLambda();
 
 	bool Desc(int a, int b) { return a > b; };
+
+	void Practice1();
+	void Practice2();
+	void Practice3();
+	void Practice4();
+	std::vector<int> InputNumbers();
 };
 
 
